@@ -1,11 +1,12 @@
-// ======================================================
-// CALCULADORA DE INTEGRALES
-// ======================================================
+/* =====================================================
+   AYUDAS ACADÉMICAS
+   CALCULADORA DE INTEGRALES
+===================================================== */
 
 
-// ------------------------------------------------------
-// EVALUAR FUNCIÓN
-// ------------------------------------------------------
+/* =====================================================
+   EVALUAR FUNCIÓN
+===================================================== */
 
 function evaluarFuncion(funcion, x) {
 
@@ -18,7 +19,7 @@ function evaluarFuncion(funcion, x) {
     } catch (error) {
 
         throw new Error(
-            "No se pudo evaluar la función."
+            "No fue posible evaluar la función."
         );
 
     }
@@ -26,13 +27,11 @@ function evaluarFuncion(funcion, x) {
 }
 
 
-// ------------------------------------------------------
-// INTEGRACIÓN NUMÉRICA - REGLA DE SIMPSON
-// ------------------------------------------------------
+/* =====================================================
+   REGLA DE SIMPSON
+===================================================== */
 
-function simpson(funcion, a, b, n = 1000) {
-
-    // Simpson necesita un número par de intervalos
+function simpson(funcion, a, b, n = 2000) {
 
     if (n % 2 !== 0) {
         n++;
@@ -42,21 +41,27 @@ function simpson(funcion, a, b, n = 1000) {
 
     let suma = 0;
 
+
     for (let i = 0; i <= n; i++) {
 
         const x = a + i * h;
 
         const fx = evaluarFuncion(funcion, x);
 
+
         if (i === 0 || i === n) {
 
             suma += fx;
 
-        } else if (i % 2 === 0) {
+        }
+
+        else if (i % 2 === 0) {
 
             suma += 2 * fx;
 
-        } else {
+        }
+
+        else {
 
             suma += 4 * fx;
 
@@ -64,72 +69,70 @@ function simpson(funcion, a, b, n = 1000) {
 
     }
 
+
     return (h / 3) * suma;
 
 }
 
 
-// ------------------------------------------------------
-// CALCULAR INTEGRAL
-// ------------------------------------------------------
+/* =====================================================
+   CALCULAR
+===================================================== */
 
 function calcularIntegral() {
 
     const funcion =
-        document.getElementById("funcion").value.trim();
+        document.getElementById(
+            "funcion"
+        ).value.trim();
+
 
     const a =
         parseFloat(
-            document.getElementById("limiteInferior").value
+            document.getElementById(
+                "limiteInferior"
+            ).value
         );
+
 
     const b =
         parseFloat(
-            document.getElementById("limiteSuperior").value
+            document.getElementById(
+                "limiteSuperior"
+            ).value
         );
 
-
-    // VALIDACIONES
 
     if (!funcion) {
 
         mostrarError(
-            "Por favor introduce una función."
+            "Introduce una función."
         );
 
         return;
+
     }
 
 
     if (isNaN(a) || isNaN(b)) {
 
         mostrarError(
-            "Debes introducir los dos límites."
+            "Introduce los dos límites."
         );
 
         return;
-    }
 
-
-    if (a === b) {
-
-        mostrarResultado(
-            funcion,
-            a,
-            b,
-            0
-        );
-
-        graficarFuncion();
-
-        return;
     }
 
 
     try {
 
         const resultado =
-            simpson(funcion, a, b, 2000);
+            simpson(
+                funcion,
+                a,
+                b
+            );
 
 
         mostrarResultado(
@@ -142,10 +145,12 @@ function calcularIntegral() {
 
         graficarFuncion();
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         mostrarError(
-            "La función no es válida. Revisa la expresión."
+            "La función introducida no es válida."
         );
 
     }
@@ -153,9 +158,9 @@ function calcularIntegral() {
 }
 
 
-// ------------------------------------------------------
-// MOSTRAR RESULTADO
-// ------------------------------------------------------
+/* =====================================================
+   MOSTRAR RESULTADO
+===================================================== */
 
 function mostrarResultado(
     funcion,
@@ -165,25 +170,45 @@ function mostrarResultado(
 ) {
 
     const resultadoDiv =
-        document.getElementById("resultado");
+        document.getElementById(
+            "resultado"
+        );
+
 
     const procedimiento =
-        document.getElementById("procedimiento");
+        document.getElementById(
+            "procedimiento"
+        );
 
 
     resultadoDiv.innerHTML = `
 
         <div>
-            <strong>Integral definida:</strong>
+
+            <strong>
+                Integral definida
+            </strong>
+
         </div>
 
-        <div style="font-size:28px;margin:15px 0;">
+
+        <div
+            style="
+                font-size:26px;
+                margin:15px 0;
+            "
+        >
+
             ∫<sub>${a}</sub><sup>${b}</sup>
             (${funcion}) dx
+
         </div>
 
+
         <div class="numero">
+
             ${resultado.toFixed(8)}
+
         </div>
 
     `;
@@ -191,7 +216,9 @@ function mostrarResultado(
 
     procedimiento.innerHTML = `
 
-        <strong>Información del cálculo</strong>
+        <strong>
+            Información del cálculo
+        </strong>
 
         <br><br>
 
@@ -217,9 +244,9 @@ function mostrarResultado(
             ${b}
         </strong>
 
-        <br><br>
+        <br>
 
-        Método utilizado:
+        Método:
 
         <strong>
             Regla de Simpson
@@ -238,19 +265,25 @@ function mostrarResultado(
 }
 
 
-// ------------------------------------------------------
-// MOSTRAR ERROR
-// ------------------------------------------------------
+/* =====================================================
+   ERROR
+===================================================== */
 
 function mostrarError(mensaje) {
 
-    const resultadoDiv =
-        document.getElementById("resultado");
+    document.getElementById(
+        "resultado"
+    ).innerHTML = `
 
-    resultadoDiv.innerHTML = `
+        <div
+            style="
+                color:#dc2626;
+                font-weight:bold;
+            "
+        >
 
-        <div style="color:#dc2626;font-weight:bold;">
             ⚠️ ${mensaje}
+
         </div>
 
     `;
@@ -258,47 +291,58 @@ function mostrarError(mensaje) {
 }
 
 
-// ------------------------------------------------------
-// GRAFICAR
-// ------------------------------------------------------
+/* =====================================================
+   GRÁFICA
+===================================================== */
 
 function graficarFuncion() {
 
     const funcion =
-        document.getElementById("funcion").value.trim();
+        document.getElementById(
+            "funcion"
+        ).value.trim();
+
 
     const a =
         parseFloat(
-            document.getElementById("limiteInferior").value
+            document.getElementById(
+                "limiteInferior"
+            ).value
         );
+
 
     const b =
         parseFloat(
-            document.getElementById("limiteSuperior").value
+            document.getElementById(
+                "limiteSuperior"
+            ).value
         );
 
 
-    if (!funcion || isNaN(a) || isNaN(b)) {
+    if (
+        !funcion ||
+        isNaN(a) ||
+        isNaN(b)
+    ) {
 
         mostrarError(
             "Introduce una función y límites válidos."
         );
 
         return;
+
     }
 
 
     try {
 
-        // ------------------------------------------------
-        // RANGO DE VISUALIZACIÓN
-        // ------------------------------------------------
-
         const margen =
             Math.abs(b - a) * 0.15 || 1;
 
+
         const inicio =
             Math.min(a, b) - margen;
+
 
         const fin =
             Math.max(a, b) + margen;
@@ -306,25 +350,38 @@ function graficarFuncion() {
 
         const cantidad = 500;
 
+
         const x = [];
 
         const y = [];
 
 
-        for (let i = 0; i < cantidad; i++) {
+        for (
+            let i = 0;
+            i < cantidad;
+            i++
+        ) {
 
             const valor =
                 inicio +
-                (fin - inicio) *
-                i /
-                (cantidad - 1);
+                (
+                    (fin - inicio) *
+                    i /
+                    (cantidad - 1)
+                );
+
 
             x.push(valor);
+
 
             try {
 
                 const resultado =
-                    evaluarFuncion(funcion, valor);
+                    evaluarFuncion(
+                        funcion,
+                        valor
+                    );
+
 
                 if (
                     typeof resultado === "number" &&
@@ -333,13 +390,17 @@ function graficarFuncion() {
 
                     y.push(resultado);
 
-                } else {
+                }
+
+                else {
 
                     y.push(null);
 
                 }
 
-            } catch {
+            }
+
+            catch {
 
                 y.push(null);
 
@@ -348,33 +409,46 @@ function graficarFuncion() {
         }
 
 
-        // ------------------------------------------------
-        // ÁREA BAJO LA CURVA
-        // ------------------------------------------------
+        /* ÁREA */
 
         const xArea = [];
+
         const yArea = [];
 
 
         const pasosArea = 300;
 
-        for (let i = 0; i <= pasosArea; i++) {
+
+        for (
+            let i = 0;
+            i <= pasosArea;
+            i++
+        ) {
 
             const valor =
                 a +
-                (b - a) *
-                i /
-                pasosArea;
+                (
+                    (b - a) *
+                    i /
+                    pasosArea
+                );
+
 
             xArea.push(valor);
+
 
             try {
 
                 yArea.push(
-                    evaluarFuncion(funcion, valor)
+                    evaluarFuncion(
+                        funcion,
+                        valor
+                    )
                 );
 
-            } catch {
+            }
+
+            catch {
 
                 yArea.push(null);
 
@@ -383,9 +457,7 @@ function graficarFuncion() {
         }
 
 
-        // ------------------------------------------------
-        // TRAZA DE LA FUNCIÓN
-        // ------------------------------------------------
+        /* FUNCIÓN */
 
         const funcionTrace = {
 
@@ -395,18 +467,20 @@ function graficarFuncion() {
 
             mode: "lines",
 
-            name: "f(x) = " + funcion,
+            name:
+                "f(x) = " +
+                funcion,
 
             line: {
+
                 width: 3
+
             }
 
         };
 
 
-        // ------------------------------------------------
-        // ÁREA
-        // ------------------------------------------------
+        /* ÁREA */
 
         const areaTrace = {
 
@@ -418,66 +492,67 @@ function graficarFuncion() {
 
             mode: "lines",
 
-            name: "Área de integración",
+            name: "Área",
 
             opacity: 0.35
 
         };
 
 
-        // ------------------------------------------------
-        // LÍNEA EJE X
-        // ------------------------------------------------
+        /* EJE X */
 
         const ejeX = {
 
-            x: [inicio, fin],
+            x: [
+                inicio,
+                fin
+            ],
 
-            y: [0, 0],
+            y: [
+                0,
+                0
+            ],
 
             mode: "lines",
 
-            name: "Eje X",
-
-            line: {
-                width: 1
-            }
+            name: "Eje X"
 
         };
 
 
-        // ------------------------------------------------
-        // CONFIGURACIÓN
-        // ------------------------------------------------
+        /* LAYOUT */
 
         const layout = {
 
-            title: {
-                text:
-                    "Gráfica de f(x) = " + funcion
-            },
+            title:
+                "f(x) = " +
+                funcion,
 
             xaxis: {
-                title: "x",
-                zeroline: true
+
+                title: "x"
+
             },
 
             yaxis: {
-                title: "f(x)",
-                zeroline: true
+
+                title: "f(x)"
+
             },
 
-            hovermode: "x unified",
-
-            legend: {
-                orientation: "h"
-            },
+            hovermode:
+                "x unified",
 
             margin: {
+
                 l: 60,
+
                 r: 30,
-                t: 70,
+
+                t: 60,
+
                 b: 60
+
             }
 
         };
@@ -487,12 +562,7 @@ function graficarFuncion() {
 
             responsive: true,
 
-            displaylogo: false,
-
-            modeBarButtonsToRemove: [
-                "lasso2d",
-                "select2d"
-            ]
+            displaylogo: false
 
         };
 
@@ -513,7 +583,9 @@ function graficarFuncion() {
 
         );
 
-    } catch (error) {
+    }
+
+    catch {
 
         mostrarError(
             "No fue posible generar la gráfica."
@@ -524,9 +596,9 @@ function graficarFuncion() {
 }
 
 
-// ------------------------------------------------------
-// CARGAR EJEMPLO
-// ------------------------------------------------------
+/* =====================================================
+   EJEMPLOS
+===================================================== */
 
 function cargarEjemplo(
     funcion,
@@ -554,9 +626,9 @@ function cargarEjemplo(
 }
 
 
-// ------------------------------------------------------
-// LIMPIAR
-// ------------------------------------------------------
+/* =====================================================
+   LIMPIAR
+===================================================== */
 
 function limpiarTodo() {
 
@@ -579,7 +651,7 @@ function limpiarTodo() {
         "resultado"
     ).innerHTML =
 
-        "Introduce una función y los límites para comenzar.";
+        "Introduce una función para comenzar.";
 
 
     document.getElementById(
@@ -587,6 +659,22 @@ function limpiarTodo() {
     ).innerHTML = "";
 
 
-    Plotly.purge("grafica");
+    Plotly.purge(
+        "grafica"
+    );
 
 }
+
+
+/* =====================================================
+   CALCULAR AUTOMÁTICAMENTE AL CARGAR
+===================================================== */
+
+window.addEventListener(
+    "load",
+    function () {
+
+        calcularIntegral();
+
+    }
+);
