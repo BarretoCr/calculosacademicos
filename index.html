@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora de Integrales</title>
+
+    <link rel="stylesheet" href="estilos.css">
+
+    <!-- Math.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.4.2/math.min.js"></script>
+
+    <!-- Plotly -->
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>∫ Calculadora de Integrales</h1>
+            <p>Resuelve, calcula y grafica integrales de funciones matemáticas</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- PANEL DE ENTRADA -->
+        <section class="card">
+
+            <h2>🧮 Datos de la integral</h2>
+
+            <div class="form-group">
+                <label for="funcion">
+                    Función f(x)
+                </label>
+
+                <input
+                    type="text"
+                    id="funcion"
+                    placeholder="Ejemplo: x^2 + 3*x"
+                    value="x^2"
+                />
+
+                <small>
+                    Ejemplos: x^2, sin(x), cos(x), exp(x), sqrt(x),
+                    x^3 - 2*x + 5
+                </small>
+            </div>
+
+            <div class="limits">
+
+                <div class="form-group">
+                    <label for="limiteInferior">
+                        Límite inferior
+                    </label>
+
+                    <input
+                        type="number"
+                        id="limiteInferior"
+                        value="0"
+                        step="any"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="limiteSuperior">
+                        Límite superior
+                    </label>
+
+                    <input
+                        type="number"
+                        id="limiteSuperior"
+                        value="2"
+                        step="any"
+                    />
+                </div>
+
+            </div>
+
+            <div class="buttons">
+
+                <button onclick="calcularIntegral()" class="btn-primary">
+                    ∫ Calcular integral
+                </button>
+
+                <button onclick="graficarFuncion()" class="btn-secondary">
+                    📊 Graficar
+                </button>
+
+                <button onclick="limpiarTodo()" class="btn-danger">
+                    🗑 Limpiar
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESULTADO -->
+        <section class="card resultado-card">
+
+            <h2>📐 Resultado</h2>
+
+            <div id="resultado" class="resultado">
+                Introduce una función y los límites para comenzar.
+            </div>
+
+            <div id="procedimiento" class="procedimiento"></div>
+
+        </section>
+
+
+        <!-- GRÁFICA -->
+        <section class="card">
+
+            <h2>📊 Representación gráfica</h2>
+
+            <div id="grafica"></div>
+
+        </section>
+
+
+        <!-- EJEMPLOS -->
+        <section class="card ejemplos">
+
+            <h2>💡 Ejemplos</h2>
+
+            <div class="ejemplos-grid">
+
+                <button onclick="cargarEjemplo('x^2', 0, 2)">
+                    ∫ x² dx
+                </button>
+
+                <button onclick="cargarEjemplo('sin(x)', 0, 3.1415926535)">
+                    ∫ sen(x) dx
+                </button>
+
+                <button onclick="cargarEjemplo('cos(x)', 0, 3.1415926535)">
+                    ∫ cos(x) dx
+                </button>
+
+                <button onclick="cargarEjemplo('2*x + 5', 1, 4)">
+                    ∫ (2x + 5) dx
+                </button>
+
+                <button onclick="cargarEjemplo('x^3 - 2*x', -2, 2)">
+                    ∫ (x³ - 2x) dx
+                </button>
+
+                <button onclick="cargarEjemplo('exp(x)', 0, 1)">
+                    ∫ eˣ dx
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>
+            Calculadora de Integrales · Proyecto educativo
+        </p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
