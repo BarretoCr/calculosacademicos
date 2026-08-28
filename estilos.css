@@ -1,1135 +1,130 @@
 /* =====================================================
-   CONFIGURACIÓN GENERAL
+   HERRAMIENTAS MATEMÁTICAS
 ===================================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+.math-tabs {
 
-html {
-    scroll-behavior: smooth;
-}
+    max-width: 600px;
 
-body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #f5f7fb;
-    color: #172554;
-    line-height: 1.6;
-}
-
-a {
-    text-decoration: none;
-}
-
-img {
-    max-width: 100%;
-}
-
-
-
-/* =====================================================
-   VARIABLES
-===================================================== */
-
-:root {
-
-    --azul: #061b49;
-
-    --azul-2: #0b2b68;
-
-    --azul-3: #123d85;
-
-    --dorado: #d99a17;
-
-    --dorado-claro: #f3c45b;
-
-    --blanco: #ffffff;
-
-    --gris: #64748b;
-
-    --fondo: #f5f7fb;
-
-    --verde: #16a34a;
-
-}
-
-
-
-/* =====================================================
-   NAVBAR
-===================================================== */
-
-.navbar {
-
-    position: sticky;
-
-    top: 0;
-
-    z-index: 1000;
-
-    background: rgba(6, 27, 73, 0.97);
-
-    border-bottom: 1px solid
-                rgba(255,255,255,0.08);
-
-}
-
-.nav-container {
-
-    max-width: 1250px;
-
-    margin: auto;
-
-    min-height: 75px;
-
-    padding: 8px 25px;
+    margin: 0 auto 35px;
 
     display: flex;
 
-    align-items: center;
+    background: white;
 
-    justify-content: space-between;
+    padding: 6px;
 
-    gap: 25px;
+    border-radius: 50px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.08);
 
 }
 
-.brand {
 
-    display: flex;
+.math-tab {
 
-    align-items: center;
+    flex: 1;
 
-    gap: 12px;
+    border: none;
 
-    color: white;
+    background: transparent;
 
-    font-weight: 800;
+    padding: 15px 25px;
+
+    border-radius: 40px;
 
     font-size: 16px;
 
-}
+    font-weight: bold;
 
-.brand img {
+    color: #64748b;
 
-    width: 55px;
-
-    height: 55px;
-
-    border-radius: 50%;
-
-    object-fit: cover;
-
-}
-
-nav {
-
-    display: flex;
-
-    gap: 25px;
-
-}
-
-nav a {
-
-    color: white;
-
-    font-size: 14px;
+    cursor: pointer;
 
     transition: 0.3s;
 
 }
 
-nav a:hover {
 
-    color: var(--dorado-claro);
+.math-tab.active {
 
-}
-
-.nav-whatsapp {
-
-    background: var(--dorado);
+    background: #061b49;
 
     color: white;
 
-    padding: 10px 18px;
-
-    border-radius: 25px;
-
-    font-weight: bold;
-
-    font-size: 14px;
+    box-shadow:
+        0 5px 15px rgba(6,27,73,0.25);
 
 }
 
 
+.math-tool {
 
-/* =====================================================
-   HERO
-===================================================== */
+    display: none;
 
-.hero {
-
-    background:
-
-        radial-gradient(
-            circle at 80% 30%,
-            #123d85,
-            transparent 35%
-        ),
-
-        linear-gradient(
-            135deg,
-            #031432,
-            #0a2b63
-        );
-
-    color: white;
-
-    padding: 80px 20px;
-
-    position: relative;
-
-    overflow: hidden;
-
-}
-
-.hero::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 500px;
-
-    height: 500px;
-
-    border: 1px solid
-            rgba(217,154,23,0.25);
-
-    border-radius: 50%;
-
-    right: -200px;
-
-    bottom: -250px;
-
-}
-
-.hero-container {
-
-    max-width: 1200px;
+    max-width: 1100px;
 
     margin: auto;
 
-    display: grid;
+}
 
-    grid-template-columns: 1.3fr 0.7fr;
 
-    gap: 70px;
+.math-tool.active {
+
+    display: block;
+
+}
+
+
+.tool-title {
+
+    display: flex;
 
     align-items: center;
 
-}
+    gap: 18px;
 
-.tag {
-
-    color: var(--dorado-claro);
-
-    font-weight: bold;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 15px;
-
-}
-
-.hero h1 {
-
-    font-size: clamp(50px, 7vw, 86px);
-
-    line-height: 0.95;
-
-    margin-bottom: 20px;
-
-    font-weight: 900;
-
-}
-
-.hero h1 span {
-
-    display: block;
-
-    color: var(--dorado);
-
-}
-
-.hero h2 {
-
-    font-size: 26px;
-
-    margin-bottom: 20px;
-
-}
-
-.hero-text > p {
-
-    color: #dbeafe;
-
-    max-width: 650px;
-
-    font-size: 18px;
+    margin-bottom: 25px;
 
 }
 
 
-
-/* BOTONES HERO */
-
-.hero-buttons {
-
-    display: flex;
-
-    gap: 15px;
-
-    margin-top: 30px;
-
-    flex-wrap: wrap;
-
-}
-
-.btn {
-
-    padding: 14px 25px;
-
-    border-radius: 30px;
-
-    font-weight: bold;
-
-    transition: 0.3s;
-
-}
-
-.btn:hover {
-
-    transform: translateY(-3px);
-
-}
-
-.btn-whatsapp {
-
-    background: #16a34a;
-
-    color: white;
-
-}
-
-.btn-outline {
-
-    border: 2px solid var(--dorado);
-
-    color: white;
-
-}
-
-
-
-/* CARACTERÍSTICAS */
-
-.hero-features {
-
-    display: flex;
-
-    gap: 25px;
-
-    margin-top: 35px;
-
-    flex-wrap: wrap;
-
-}
-
-.hero-features strong {
-
-    color: var(--dorado);
-
-    margin-right: 5px;
-
-}
-
-
-
-/* =====================================================
-   TARJETA QR
-===================================================== */
-
-.hero-contact {
-
-    display: flex;
-
-    justify-content: center;
-
-}
-
-.contact-card {
-
-    background: rgba(255,255,255,0.08);
-
-    backdrop-filter: blur(15px);
-
-    border: 1px solid
-            rgba(217,154,23,0.8);
-
-    border-radius: 25px;
-
-    padding: 30px;
-
-    text-align: center;
-
-    width: 330px;
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.35);
-
-}
-
-.contact-icon {
-
-    font-size: 40px;
-
-}
-
-.contact-card h3 {
-
-    font-size: 26px;
-
-    margin: 10px 0;
-
-}
-
-.contact-card p {
-
-    color: #dbeafe;
-
-}
-
-.qr {
-
-    width: 190px;
-
-    height: 190px;
-
-    background: white;
-
-    padding: 10px;
-
-    border-radius: 15px;
-
-    margin: 20px auto;
-
-    display: block;
-
-}
-
-.whatsapp-button {
-
-    display: block;
-
-    background: #16a34a;
-
-    color: white;
-
-    padding: 13px;
-
-    border-radius: 30px;
-
-    font-weight: bold;
-
-    transition: 0.3s;
-
-}
-
-.whatsapp-button:hover {
-
-    transform: scale(1.04);
-
-}
-
-.phone {
-
-    margin-top: 15px;
-
-    font-size: 14px;
-
-}
-
-
-
-/* =====================================================
-   SECCIONES
-===================================================== */
-
-.section {
-
-    max-width: 1200px;
-
-    margin: auto;
-
-    padding: 90px 20px;
-
-}
-
-.section-header {
-
-    text-align: center;
-
-    margin-bottom: 50px;
-
-}
-
-.section-header span {
-
-    color: var(--dorado);
-
-    font-weight: bold;
-
-    letter-spacing: 2px;
-
-}
-
-.section-header h2 {
-
-    font-size: 40px;
-
-    margin: 8px 0;
-
-}
-
-.section-header p {
-
-    color: var(--gris);
-
-}
-
-
-
-/* =====================================================
-   SERVICIOS
-===================================================== */
-
-.services-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 22px;
-
-}
-
-.service-card {
-
-    background: white;
-
-    padding: 35px 25px;
-
-    border-radius: 18px;
-
-    text-align: center;
-
-    border: 1px solid #e2e8f0;
-
-    transition: 0.3s;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,0.05);
-
-}
-
-.service-card:hover {
-
-    transform: translateY(-8px);
-
-    border-color: var(--dorado);
-
-    box-shadow:
-        0 18px 40px rgba(6,27,73,0.13);
-
-}
-
-.service-icon {
+.big-symbol {
 
     width: 70px;
 
     height: 70px;
 
-    margin: auto auto 20px;
-
-    border-radius: 18px;
-
-    background: #eff6ff;
-
     display: flex;
 
     align-items: center;
 
     justify-content: center;
 
-    font-size: 32px;
+    border-radius: 18px;
 
-}
-
-.service-card h3 {
-
-    margin-bottom: 10px;
-
-}
-
-.service-card p {
-
-    color: var(--gris);
-
-}
-
-
-
-/* =====================================================
-   CALCULADORA
-===================================================== */
-
-.calculator-section {
-
-    background: #eef2f8;
-
-    padding: 90px 20px;
-
-}
-
-.calculator-container {
-
-    max-width: 1100px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 25px;
-
-}
-
-.calculator-card,
-.result-card,
-.graph-card,
-.examples {
-
-    background: white;
-
-    border-radius: 20px;
-
-    padding: 30px;
-
-    box-shadow:
-        0 10px 35px rgba(0,0,0,0.07);
-
-}
-
-.input-group {
-
-    margin-bottom: 20px;
-
-}
-
-.input-group label {
-
-    display: block;
-
-    font-weight: bold;
-
-    margin-bottom: 8px;
-
-}
-
-.input-group input {
-
-    width: 100%;
-
-    padding: 14px;
-
-    border: 2px solid #e2e8f0;
-
-    border-radius: 10px;
-
-    font-size: 17px;
-
-    color: #172554;
-
-}
-
-.input-group input:focus {
-
-    outline: none;
-
-    border-color: var(--dorado);
-
-}
-
-.input-group small {
-
-    display: block;
-
-    margin-top: 5px;
-
-    color: var(--gris);
-
-}
-
-.limits {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 15px;
-
-}
-
-
-
-/* BOTONES CALCULADORA */
-
-.calculator-buttons {
-
-    display: flex;
-
-    gap: 10px;
-
-    flex-wrap: wrap;
-
-}
-
-.calculator-buttons button {
-
-    border: none;
-
-    padding: 13px 20px;
-
-    border-radius: 10px;
-
-    cursor: pointer;
-
-    font-weight: bold;
-
-    transition: 0.3s;
-
-}
-
-.calculator-buttons button:hover {
-
-    transform: translateY(-2px);
-
-}
-
-.calculate-button {
-
-    background: var(--azul);
+    background: #061b49;
 
     color: white;
 
-}
-
-.graph-button {
-
-    background: var(--dorado);
-
-    color: white;
-
-}
-
-.clear-button {
-
-    background: #e2e8f0;
-
-    color: #334155;
-
-}
-
-
-
-/* RESULTADO */
-
-.result-card h3,
-.graph-card h3,
-.examples h3 {
-
-    margin-bottom: 20px;
-
-}
-
-.result {
-
-    background: #eff6ff;
-
-    border-left: 5px solid var(--dorado);
-
-    padding: 20px;
-
-    border-radius: 10px;
-
-    min-height: 100px;
-
-}
-
-.result .numero {
-
-    font-size: 32px;
+    font-size: 28px;
 
     font-weight: bold;
 
-    color: var(--azul);
-
-    margin-top: 10px;
-
 }
 
-.procedure {
 
-    margin-top: 15px;
+.tool-title h3 {
 
-    background: #f8fafc;
+    font-size: 23px;
 
-    border-radius: 10px;
-
-    padding: 15px;
+    margin-bottom: 3px;
 
 }
 
 
-
-/* GRÁFICA */
-
-.graph-card {
-
-    max-width: 1100px;
-
-    margin: 25px auto 0;
-
-}
-
-#grafica {
-
-    width: 100%;
-
-    min-height: 500px;
-
-}
-
-
-
-/* EJEMPLOS */
-
-.examples {
-
-    max-width: 1100px;
-
-    margin: 25px auto 0;
-
-}
-
-.examples-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 12px;
-
-}
-
-.examples-grid button {
-
-    padding: 14px;
-
-    background: #eff6ff;
-
-    border: 1px solid #cbd5e1;
-
-    border-radius: 10px;
-
-    color: var(--azul);
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-}
-
-.examples-grid button:hover {
-
-    background: #dbeafe;
-
-}
-
-
-
-/* =====================================================
-   SOBRE NOSOTROS
-===================================================== */
-
-.about-section {
-
-    padding: 90px 20px;
-
-    background: white;
-
-}
-
-.about-container {
-
-    max-width: 1100px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns: 0.6fr 1.4fr;
-
-    gap: 70px;
-
-    align-items: center;
-
-}
-
-.about-logo {
-
-    text-align: center;
-
-}
-
-.about-logo img {
-
-    width: 300px;
-
-    border-radius: 50%;
-
-    box-shadow:
-        0 20px 50px rgba(6,27,73,0.2);
-
-}
-
-.about-text > span {
-
-    color: var(--dorado);
-
-    font-weight: bold;
-
-    letter-spacing: 2px;
-
-}
-
-.about-text h2 {
-
-    font-size: 42px;
-
-    margin: 10px 0 20px;
-
-}
-
-.about-text p {
-
-    color: var(--gris);
-
-    margin-bottom: 15px;
-
-}
-
-.about-items {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 15px;
-
-    margin-top: 25px;
-
-}
-
-.about-items div {
-
-    background: #f8fafc;
-
-    padding: 15px;
-
-    border-radius: 10px;
-
-}
-
-
-
-/* =====================================================
-   CONTACTO
-===================================================== */
-
-.contact-section {
-
-    padding: 70px 20px;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #061b49,
-            #0b2b68
-        );
-
-    color: white;
-
-}
-
-.contact-container {
-
-    max-width: 1000px;
-
-    margin: auto;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 40px;
-
-}
-
-.contact-container span {
-
-    color: var(--dorado-claro);
-
-    font-weight: bold;
-
-    letter-spacing: 2px;
-
-}
-
-.contact-container h2 {
-
-    font-size: 42px;
-
-    margin: 10px 0;
-
-}
-
-.contact-container p {
-
-    color: #dbeafe;
-
-}
-
-.contact-main-button {
-
-    display: inline-block;
-
-    margin-top: 20px;
-
-    background: #16a34a;
-
-    color: white;
-
-    padding: 14px 25px;
-
-    border-radius: 30px;
-
-    font-weight: bold;
-
-}
-
-.contact-qr img {
-
-    width: 180px;
-
-    background: white;
-
-    padding: 10px;
-
-    border-radius: 15px;
-
-}
-
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer {
-
-    background: #020b1d;
-
-    color: white;
-
-    padding: 50px 20px 20px;
-
-}
-
-.footer-content {
-
-    max-width: 1100px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        2fr 1fr 1fr;
-
-    gap: 40px;
-
-}
-
-.footer-content h3 {
-
-    color: var(--dorado);
-
-}
-
-.footer-content h4 {
-
-    margin-bottom: 10px;
-
-}
-
-.footer-content p {
-
-    color: #94a3b8;
-
-}
-
-.footer-content a {
-
-    display: block;
-
-    color: #cbd5e1;
-
-    margin-bottom: 5px;
-
-}
-
-.copyright {
-
-    max-width: 1100px;
-
-    margin: 40px auto 0;
-
-    padding-top: 20px;
-
-    border-top: 1px solid #1e293b;
-
-    text-align: center;
+.tool-title p {
 
     color: #64748b;
 
@@ -1138,24 +133,119 @@ footer {
 
 
 /* =====================================================
-   WHATSAPP FLOTANTE
+   PROCEDIMIENTO
 ===================================================== */
 
-.floating-whatsapp {
+.procedure-card {
 
-    position: fixed;
+    background: white;
 
-    right: 25px;
+    border-radius: 20px;
 
-    bottom: 25px;
+    padding: 30px;
 
-    width: 60px;
+    margin-top: 25px;
 
-    height: 60px;
+    box-shadow:
+        0 10px 35px rgba(0,0,0,0.07);
+
+}
+
+
+.procedure-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #e2e8f0;
+
+}
+
+
+.procedure-title > span {
+
+    width: 50px;
+
+    height: 50px;
+
+    background: #fff7df;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 25px;
+
+}
+
+
+.procedure-title h3 {
+
+    font-size: 21px;
+
+}
+
+
+.procedure-title p {
+
+    color: #64748b;
+
+    font-size: 14px;
+
+}
+
+
+
+/* PASOS */
+
+.steps {
+
+    padding-top: 25px;
+
+}
+
+
+.step {
+
+    position: relative;
+
+    padding: 20px 20px 20px 70px;
+
+    margin-bottom: 15px;
+
+    background: #f8fafc;
+
+    border-radius: 15px;
+
+    border-left: 4px solid #d99a17;
+
+}
+
+
+.step-number {
+
+    position: absolute;
+
+    left: 15px;
+
+    top: 18px;
+
+    width: 38px;
+
+    height: 38px;
 
     border-radius: 50%;
 
-    background: #16a34a;
+    background: #061b49;
 
     color: white;
 
@@ -1165,64 +255,130 @@ footer {
 
     justify-content: center;
 
-    font-size: 28px;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,0.3);
-
-    z-index: 2000;
-
-    transition: 0.3s;
+    font-weight: bold;
 
 }
 
-.floating-whatsapp:hover {
 
-    transform: scale(1.1);
+.step h4 {
+
+    color: #061b49;
+
+    margin-bottom: 8px;
+
+}
+
+
+.step-content {
+
+    font-size: 18px;
+
+    color: #1e293b;
+
+    overflow-x: auto;
+
+}
+
+
+.step.final {
+
+    background: #eff6ff;
+
+    border-left-color: #16a34a;
+
+}
+
+
+.step.final .step-number {
+
+    background: #16a34a;
+
+}
+
+
+.empty-step {
+
+    text-align: center;
+
+    padding: 30px;
+
+    color: #64748b;
 
 }
 
 
 
 /* =====================================================
-   RESPONSIVE
+   RESULTADOS MATEMÁTICOS
 ===================================================== */
 
-@media (max-width: 900px) {
+.math-result {
 
-    nav {
+    text-align: center;
 
-        display: none;
+}
+
+
+.math-result .formula {
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    color: #061b49;
+
+    padding: 15px;
+
+    overflow-x: auto;
+
+}
+
+
+.math-result .result-number {
+
+    font-size: 38px;
+
+    font-weight: 900;
+
+    color: #d99a17;
+
+    margin-top: 10px;
+
+}
+
+
+.exact-result {
+
+    display: inline-block;
+
+    background: #eff6ff;
+
+    padding: 10px 18px;
+
+    border-radius: 10px;
+
+    margin-top: 12px;
+
+    color: #061b49;
+
+    font-weight: bold;
+
+}
+
+
+
+/* =====================================================
+   RESPONSIVE MATEMÁTICAS
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .math-tabs {
+
+        width: 95%;
 
     }
 
-    .hero-container {
-
-        grid-template-columns: 1fr;
-
-        text-align: center;
-
-    }
-
-    .hero-text > p {
-
-        margin: auto;
-
-    }
-
-    .hero-buttons,
-    .hero-features {
-
-        justify-content: center;
-
-    }
-
-    .services-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-    }
 
     .calculator-container {
 
@@ -1230,105 +386,31 @@ footer {
 
     }
 
-    .about-container {
 
-        grid-template-columns: 1fr;
+    .step {
 
-        text-align: center;
-
-    }
-
-    .about-items {
-
-        text-align: left;
+        padding-left: 60px;
 
     }
 
-    .contact-container {
 
-        flex-direction: column;
+    .step-content {
 
-        text-align: center;
-
-    }
-
-    .footer-content {
-
-        grid-template-columns: 1fr;
+        font-size: 16px;
 
     }
 
-}
 
+    .math-result .formula {
 
-
-@media (max-width: 600px) {
-
-    .brand span {
-
-        display: none;
+        font-size: 20px;
 
     }
 
-    .nav-whatsapp {
 
-        display: none;
+    .math-result .result-number {
 
-    }
-
-    .hero {
-
-        padding: 55px 15px;
-
-    }
-
-    .hero h1 {
-
-        font-size: 50px;
-
-    }
-
-    .hero h2 {
-
-        font-size: 21px;
-
-    }
-
-    .hero-features {
-
-        flex-direction: column;
-
-        gap: 10px;
-
-    }
-
-    .services-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-    .limits {
-
-        grid-template-columns: 1fr;
-
-    }
-
-    .examples-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-    .about-text h2 {
-
-        font-size: 32px;
-
-    }
-
-    .contact-container h2 {
-
-        font-size: 32px;
+        font-size: 30px;
 
     }
 
