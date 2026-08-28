@@ -9,23 +9,26 @@
           content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="Ayudas Académicas - Trabajos universitarios, evaluaciones, análisis de datos, matemáticas y mucho más.">
+          content="Ayudas Académicas - Herramientas matemáticas, trabajos universitarios, evaluaciones y asesorías.">
 
-    <meta name="author"
-          content="Ayudas Académicas">
+    <title>AYUDAS ACADÉMICAS | Herramientas Matemáticas</title>
 
-    <title>AYUDAS ACADÉMICAS | Trabajos y Asesorías</title>
-
-    <!-- Favicon -->
     <link rel="icon" href="img/logo.jpg">
 
-    <!-- Hoja de estilos -->
     <link rel="stylesheet" href="estilos.css">
+
+
+    <!-- =================================================
+         LIBRERÍAS MATEMÁTICAS
+    ================================================== -->
 
     <!-- Math.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.4.2/math.min.js"></script>
 
-    <!-- Plotly -->
+    <!-- Algebrite - cálculo simbólico -->
+    <script src="https://cdn.jsdelivr.net/npm/algebrite@1.4.0/dist/algebrite.bundle-for-browser.js"></script>
+
+    <!-- Plotly - gráficas -->
     <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 
 </head>
@@ -35,7 +38,7 @@
 
 
 <!-- =====================================================
-     NAVEGACIÓN
+     NAVBAR
 ===================================================== -->
 
 <header class="navbar">
@@ -58,7 +61,7 @@
 
             <a href="#servicios">Servicios</a>
 
-            <a href="#calculadora">Calculadora</a>
+            <a href="#matematicas">Matemáticas</a>
 
             <a href="#nosotros">Nosotros</a>
 
@@ -68,9 +71,9 @@
 
 
         <a
-            class="nav-whatsapp"
             href="https://wa.me/+573025166134"
             target="_blank"
+            class="nav-whatsapp"
         >
 
             WhatsApp
@@ -91,8 +94,6 @@
 
     <div class="hero-container">
 
-
-        <!-- TEXTO -->
 
         <div class="hero-text">
 
@@ -121,9 +122,9 @@
 
             <p>
 
-                Te acompañamos en tus proyectos académicos
-                con soluciones personalizadas, responsables
-                y de calidad.
+                Te acompañamos en tu proceso académico
+                con herramientas, orientación y soluciones
+                para tus proyectos universitarios.
 
             </p>
 
@@ -142,11 +143,11 @@
 
 
                 <a
-                    href="#servicios"
+                    href="#matematicas"
                     class="btn btn-outline"
                 >
 
-                    Ver servicios
+                    🧮 Herramientas matemáticas
 
                 </a>
 
@@ -156,29 +157,18 @@
             <div class="hero-features">
 
                 <div>
-
                     <strong>✓</strong>
-
                     Atención personalizada
-
                 </div>
 
-
                 <div>
-
                     <strong>✓</strong>
-
                     Confidencialidad
-
                 </div>
 
-
                 <div>
-
                     <strong>✓</strong>
-
                     Calidad
-
                 </div>
 
             </div>
@@ -187,31 +177,25 @@
 
 
 
-        <!-- TARJETA QR -->
+        <!-- QR -->
 
         <div class="hero-contact">
 
             <div class="contact-card">
 
                 <div class="contact-icon">
-
                     💬
-
                 </div>
 
 
                 <h3>
-
                     ¿Necesitas ayuda?
-
                 </h3>
 
 
                 <p>
-
                     Escríbenos directamente
                     por WhatsApp.
-
                 </p>
 
 
@@ -228,17 +212,13 @@
                     class="whatsapp-button"
                 >
 
-                    <span>💬</span>
-
-                    Contactar por WhatsApp
+                    💬 Contactar por WhatsApp
 
                 </a>
 
 
                 <p class="phone">
-
                     +57 302 516 6134
-
                 </p>
 
             </div>
@@ -262,16 +242,11 @@
         <span>LO QUE HACEMOS</span>
 
         <h2>
-
             ¿En qué podemos ayudarte?
-
         </h2>
 
         <p>
-
-            Encuentra soluciones para diferentes
-            necesidades académicas.
-
+            Soluciones para diferentes necesidades académicas.
         </p>
 
     </div>
@@ -282,148 +257,95 @@
 
         <div class="service-card">
 
-            <div class="service-icon">
-
-                🎓
-
-            </div>
+            <div class="service-icon">🎓</div>
 
             <h3>
-
                 Trabajos Universitarios
-
             </h3>
 
             <p>
-
                 Apoyo en la elaboración y estructuración
                 de trabajos académicos.
-
             </p>
 
         </div>
 
 
-
         <div class="service-card">
 
-            <div class="service-icon">
-
-                📝
-
-            </div>
+            <div class="service-icon">📝</div>
 
             <h3>
-
                 Evaluaciones
-
             </h3>
 
             <p>
-
-                Apoyo y orientación para actividades,
+                Orientación para actividades,
                 cuestionarios y evaluaciones.
-
             </p>
 
         </div>
 
 
-
         <div class="service-card">
 
-            <div class="service-icon">
-
-                📚
-
-            </div>
+            <div class="service-icon">📚</div>
 
             <h3>
-
                 Ensayos y Monografías
-
             </h3>
 
             <p>
-
                 Investigación, redacción y estructuración
                 de documentos académicos.
-
             </p>
 
         </div>
 
 
-
         <div class="service-card">
 
-            <div class="service-icon">
-
-                💻
-
-            </div>
+            <div class="service-icon">💻</div>
 
             <h3>
-
                 Programación
-
             </h3>
 
             <p>
-
                 Desarrollo y orientación en proyectos
                 de programación y sistemas.
-
             </p>
 
         </div>
 
 
-
         <div class="service-card">
 
-            <div class="service-icon">
-
-                📊
-
-            </div>
+            <div class="service-icon">📊</div>
 
             <h3>
-
                 Análisis de Datos
-
             </h3>
 
             <p>
-
                 Análisis estadístico, gráficas,
-                cálculos y presentación de resultados.
-
+                cálculos y resultados.
             </p>
 
         </div>
 
 
-
         <div class="service-card">
 
-            <div class="service-icon">
-
-                ∫
-
-            </div>
+            <div class="service-icon">∫</div>
 
             <h3>
-
                 Matemáticas
-
             </h3>
 
             <p>
-
-                Cálculo, integrales, derivadas,
-                álgebra y diferentes áreas matemáticas.
-
+                Integrales, derivadas, álgebra,
+                cálculo y mucho más.
             </p>
 
         </div>
@@ -435,108 +357,193 @@
 
 
 <!-- =====================================================
-     CALCULADORA
+     HERRAMIENTAS MATEMÁTICAS
 ===================================================== -->
 
-<section id="calculadora"
+<section id="matematicas"
          class="calculator-section">
 
 
     <div class="section-header">
 
-        <span>HERRAMIENTA GRATUITA</span>
+        <span>HERRAMIENTAS GRATUITAS</span>
 
         <h2>
-
-            🧮 Calculadora de Integrales
-
+            🧮 Herramientas Matemáticas
         </h2>
 
         <p>
-
-            Introduce una función, establece los límites
-            y obtén el resultado junto con su representación gráfica.
-
+            Resuelve integrales y derivadas mostrando
+            el procedimiento paso a paso.
         </p>
 
     </div>
 
 
 
-    <div class="calculator-container">
+    <!-- =================================================
+         SELECTOR DE HERRAMIENTA
+    ================================================== -->
+
+    <div class="math-tabs">
+
+        <button
+            class="math-tab active"
+            onclick="mostrarHerramienta('integral', this)"
+        >
+
+            ∫ Integrales
+
+        </button>
 
 
-        <!-- FORMULARIO -->
+        <button
+            class="math-tab"
+            onclick="mostrarHerramienta('derivada', this)"
+        >
 
-        <div class="calculator-card">
+            d/dx Derivadas
 
+        </button>
 
-            <div class="input-group">
-
-                <label>
-
-                    Función f(x)
-
-                </label>
-
-                <input
-                    type="text"
-                    id="funcion"
-                    value="x^2"
-                    placeholder="Ejemplo: x^2 + 3*x"
-                >
-
-                <small>
-
-                    Ejemplos:
-                    x^2,
-                    sin(x),
-                    cos(x),
-                    sqrt(x),
-                    exp(x)
-
-                </small>
-
-            </div>
+    </div>
 
 
 
-            <div class="limits">
+    <!-- =================================================
+         INTEGRALES
+    ================================================== -->
+
+    <div
+        id="herramienta-integral"
+        class="math-tool active"
+    >
+
+
+        <div class="calculator-container">
+
+
+            <!-- ENTRADA -->
+
+            <div class="calculator-card">
+
+                <div class="tool-title">
+
+                    <div class="big-symbol">
+                        ∫
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Calculadora de Integrales
+                        </h3>
+
+                        <p>
+                            Integral definida
+                        </p>
+
+                    </div>
+
+                </div>
 
 
                 <div class="input-group">
 
                     <label>
-
-                        Límite inferior
-
+                        Función f(x)
                     </label>
 
                     <input
-                        type="number"
-                        id="limiteInferior"
-                        value="0"
-                        step="any"
+                        type="text"
+                        id="funcion"
+                        value="x^2"
+                        placeholder="Ejemplo: x^2 + 3*x"
                     >
+
+                    <small>
+
+                        Ejemplos:
+                        x^2,
+                        x^3 + 2*x,
+                        sin(x),
+                        cos(x),
+                        exp(x)
+
+                    </small>
 
                 </div>
 
 
 
-                <div class="input-group">
+                <div class="limits">
 
-                    <label>
 
-                        Límite superior
+                    <div class="input-group">
 
-                    </label>
+                        <label>
+                            Límite inferior
+                        </label>
 
-                    <input
-                        type="number"
-                        id="limiteSuperior"
-                        value="2"
-                        step="any"
+                        <input
+                            type="number"
+                            id="limiteInferior"
+                            value="0"
+                            step="any"
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Límite superior
+                        </label>
+
+                        <input
+                            type="number"
+                            id="limiteSuperior"
+                            value="2"
+                            step="any"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="calculator-buttons">
+
+                    <button
+                        onclick="calcularIntegral()"
+                        class="calculate-button"
                     >
+
+                        ∫ Resolver integral
+
+                    </button>
+
+
+                    <button
+                        onclick="graficarIntegral()"
+                        class="graph-button"
+                    >
+
+                        📊 Graficar
+
+                    </button>
+
+
+                    <button
+                        onclick="limpiarIntegral()"
+                        class="clear-button"
+                    >
+
+                        Limpiar
+
+                    </button>
 
                 </div>
 
@@ -544,66 +551,135 @@
 
 
 
-            <div class="calculator-buttons">
+            <!-- RESULTADO -->
 
-                <button
-                    onclick="calcularIntegral()"
-                    class="calculate-button"
+            <div class="result-card">
+
+                <h3>
+                    📐 Resultado
+                </h3>
+
+
+                <div
+                    id="resultadoIntegral"
+                    class="result"
                 >
 
-                    ∫ Calcular
+                    Introduce una función
+                    para comenzar.
 
-                </button>
+                </div>
 
-
-                <button
-                    onclick="graficarFuncion()"
-                    class="graph-button"
-                >
-
-                    📊 Graficar
-
-                </button>
-
-
-                <button
-                    onclick="limpiarTodo()"
-                    class="clear-button"
-                >
-
-                    Limpiar
-
-                </button>
 
             </div>
-
 
         </div>
 
 
 
-        <!-- RESULTADO -->
+        <!-- PROCEDIMIENTO -->
 
-        <div class="result-card">
+        <div class="procedure-card">
+
+            <div class="procedure-title">
+
+                <span>
+                    📖
+                </span>
+
+                <div>
+
+                    <h3>
+                        Procedimiento paso a paso
+                    </h3>
+
+                    <p>
+                        Desarrollo matemático de la integral
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="procedimientoIntegral"
+                class="steps"
+            >
+
+                <div class="empty-step">
+
+                    Aquí aparecerá el procedimiento
+                    de la integral.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- GRÁFICA -->
+
+        <div class="graph-card">
 
             <h3>
+                📊 Representación gráfica
+            </h3>
 
-                📐 Resultado
+            <div id="graficaIntegral"></div>
 
+        </div>
+
+
+
+        <!-- EJEMPLOS -->
+
+        <div class="examples">
+
+            <h3>
+                💡 Ejemplos de integrales
             </h3>
 
 
-            <div id="resultado"
-                 class="result">
+            <div class="examples-grid">
 
-                Introduce una función
-                para comenzar.
+                <button
+                    onclick="cargarIntegral('x^2',0,2)"
+                >
+                    ∫ x² dx
+                </button>
 
-            </div>
+                <button
+                    onclick="cargarIntegral('3*x^2',0,2)"
+                >
+                    ∫ 3x² dx
+                </button>
 
+                <button
+                    onclick="cargarIntegral('sin(x)',0,3.1415926535)"
+                >
+                    ∫ sen(x) dx
+                </button>
 
-            <div id="procedimiento"
-                 class="procedure">
+                <button
+                    onclick="cargarIntegral('cos(x)',0,3.1415926535)"
+                >
+                    ∫ cos(x) dx
+                </button>
+
+                <button
+                    onclick="cargarIntegral('2*x+5',1,4)"
+                >
+                    ∫ (2x + 5) dx
+                </button>
+
+                <button
+                    onclick="cargarIntegral('exp(x)',0,1)"
+                >
+                    ∫ eˣ dx
+                </button>
 
             </div>
 
@@ -613,90 +689,238 @@
 
 
 
-    <!-- GRÁFICA -->
+    <!-- =================================================
+         DERIVADAS
+    ================================================== -->
 
-    <div class="graph-card">
-
-        <h3>
-
-            📊 Representación gráfica
-
-        </h3>
-
-
-        <div id="grafica"></div>
-
-    </div>
+    <div
+        id="herramienta-derivada"
+        class="math-tool"
+    >
 
 
-
-    <!-- EJEMPLOS -->
-
-    <div class="examples">
-
-        <h3>
-
-            💡 Prueba algunos ejemplos
-
-        </h3>
+        <div class="calculator-container">
 
 
-        <div class="examples-grid">
+            <!-- ENTRADA -->
+
+            <div class="calculator-card">
+
+                <div class="tool-title">
+
+                    <div class="big-symbol">
+                        d/dx
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Calculadora de Derivadas
+                        </h3>
+
+                        <p>
+                            Derivada respecto a x
+                        </p>
+
+                    </div>
+
+                </div>
 
 
-            <button
-                onclick="cargarEjemplo('x^2',0,2)"
+                <div class="input-group">
+
+                    <label>
+                        Función f(x)
+                    </label>
+
+                    <input
+                        type="text"
+                        id="funcionDerivada"
+                        value="x^3 + 2*x^2 - 5*x + 4"
+                        placeholder="Ejemplo: x^3 + 2*x"
+                    >
+
+                    <small>
+
+                        Ejemplos:
+                        x^3,
+                        x^2 + 5*x,
+                        sin(x),
+                        cos(x),
+                        exp(x)
+
+                    </small>
+
+                </div>
+
+
+                <div class="calculator-buttons">
+
+                    <button
+                        onclick="calcularDerivada()"
+                        class="calculate-button"
+                    >
+
+                        d/dx Resolver derivada
+
+                    </button>
+
+
+                    <button
+                        onclick="graficarDerivada()"
+                        class="graph-button"
+                    >
+
+                        📊 Graficar
+
+                    </button>
+
+
+                    <button
+                        onclick="limpiarDerivada()"
+                        class="clear-button"
+                    >
+
+                        Limpiar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RESULTADO -->
+
+            <div class="result-card">
+
+                <h3>
+                    📐 Resultado
+                </h3>
+
+
+                <div
+                    id="resultadoDerivada"
+                    class="result"
+                >
+
+                    Introduce una función
+                    para comenzar.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PROCEDIMIENTO -->
+
+        <div class="procedure-card">
+
+            <div class="procedure-title">
+
+                <span>
+                    📖
+                </span>
+
+                <div>
+
+                    <h3>
+                        Procedimiento paso a paso
+                    </h3>
+
+                    <p>
+                        Desarrollo de la derivada
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="procedimientoDerivada"
+                class="steps"
             >
 
-                ∫ x² dx
+                <div class="empty-step">
 
-            </button>
+                    Aquí aparecerá el procedimiento
+                    de la derivada.
 
+                </div>
 
-            <button
-                onclick="cargarEjemplo('sin(x)',0,3.1415926535)"
-            >
+            </div>
 
-                ∫ sen(x) dx
-
-            </button>
+        </div>
 
 
-            <button
-                onclick="cargarEjemplo('cos(x)',0,3.1415926535)"
-            >
 
-                ∫ cos(x) dx
+        <!-- GRÁFICA -->
 
-            </button>
+        <div class="graph-card">
 
+            <h3>
+                📊 Función y derivada
+            </h3>
 
-            <button
-                onclick="cargarEjemplo('2*x+5',1,4)"
-            >
+            <div id="graficaDerivada"></div>
 
-                ∫ (2x + 5) dx
-
-            </button>
+        </div>
 
 
-            <button
-                onclick="cargarEjemplo('x^3-2*x',-2,2)"
-            >
 
-                ∫ (x³ - 2x) dx
+        <!-- EJEMPLOS -->
 
-            </button>
+        <div class="examples">
+
+            <h3>
+                💡 Ejemplos de derivadas
+            </h3>
 
 
-            <button
-                onclick="cargarEjemplo('exp(x)',0,1)"
-            >
+            <div class="examples-grid">
 
-                ∫ eˣ dx
+                <button
+                    onclick="cargarDerivada('x^3')"
+                >
+                    d/dx x³
+                </button>
 
-            </button>
+                <button
+                    onclick="cargarDerivada('x^2 + 5*x')"
+                >
+                    d/dx (x² + 5x)
+                </button>
 
+                <button
+                    onclick="cargarDerivada('sin(x)')"
+                >
+                    d/dx sen(x)
+                </button>
+
+                <button
+                    onclick="cargarDerivada('cos(x)')"
+                >
+                    d/dx cos(x)
+                </button>
+
+                <button
+                    onclick="cargarDerivada('exp(x)')"
+                >
+                    d/dx eˣ
+                </button>
+
+                <button
+                    onclick="cargarDerivada('sqrt(x)')"
+                >
+                    d/dx √x
+                </button>
+
+            </div>
 
         </div>
 
@@ -712,7 +936,6 @@
 
 <section id="nosotros"
          class="about-section">
-
 
     <div class="about-container">
 
@@ -730,33 +953,29 @@
         <div class="about-text">
 
             <span>
-
                 SOBRE NOSOTROS
-
             </span>
 
 
             <h2>
-
                 Tu apoyo en el camino académico
-
             </h2>
 
 
             <p>
 
                 En <strong>Ayudas Académicas</strong>
-                ofrecemos orientación y soluciones para
-                diferentes necesidades universitarias.
+                ofrecemos herramientas y acompañamiento
+                para diferentes necesidades universitarias.
 
             </p>
 
 
             <p>
 
-                Nuestro objetivo es facilitar el aprendizaje,
-                brindar acompañamiento y ayudarte a presentar
-                trabajos de calidad.
+                Nuestra plataforma incluye herramientas
+                matemáticas interactivas para facilitar
+                la comprensión de diferentes conceptos.
 
             </p>
 
@@ -764,34 +983,23 @@
             <div class="about-items">
 
                 <div>
-
                     🔒
                     <strong>Confidencialidad</strong>
-
                 </div>
 
-
                 <div>
-
                     ⭐
                     <strong>Calidad</strong>
-
                 </div>
 
-
                 <div>
-
                     👥
                     <strong>Atención personalizada</strong>
-
                 </div>
 
-
                 <div>
-
                     ⏰
                     <strong>Compromiso</strong>
-
                 </div>
 
             </div>
@@ -811,23 +1019,18 @@
 <section id="contacto"
          class="contact-section">
 
-
     <div class="contact-container">
 
 
         <div>
 
             <span>
-
                 ¿TIENES ALGUNA PREGUNTA?
-
             </span>
 
 
             <h2>
-
                 Hablemos por WhatsApp
-
             </h2>
 
 
@@ -879,16 +1082,12 @@
         <div>
 
             <h3>
-
                 AYUDAS ACADÉMICAS
-
             </h3>
 
             <p>
-
                 Trabajos universitarios,
                 evaluaciones y todo lo relacionado.
-
             </p>
 
         </div>
@@ -897,46 +1096,30 @@
         <div>
 
             <h4>
+                Herramientas
+            </h4>
 
+            <a href="#matematicas">
+                Integrales
+            </a>
+
+            <a href="#matematicas">
+                Derivadas
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h4>
                 Contacto
-
             </h4>
 
             <p>
-
                 WhatsApp:
                 +57 302 516 6134
-
             </p>
-
-        </div>
-
-
-        <div>
-
-            <h4>
-
-                Enlaces
-
-            </h4>
-
-            <a href="#inicio">
-
-                Inicio
-
-            </a>
-
-            <a href="#servicios">
-
-                Servicios
-
-            </a>
-
-            <a href="#calculadora">
-
-                Calculadora
-
-            </a>
 
         </div>
 
@@ -955,7 +1138,7 @@
 
 
 <!-- =====================================================
-     BOTÓN FLOTANTE WHATSAPP
+     WHATSAPP FLOTANTE
 ===================================================== -->
 
 <a
@@ -970,11 +1153,7 @@
 </a>
 
 
-
-<!-- JAVASCRIPT -->
-
 <script src="script.js"></script>
-
 
 </body>
 
