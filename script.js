@@ -1,31 +1,24 @@
-/* =====================================================
+/* ============================================================
    AYUDAS ACADÉMICAS
-   CALCULADORA MATEMÁTICA
-
-   Funciones:
-   - Integrales
-   - Integrales definidas
-   - Derivadas
-   - Derivadas de orden superior
-   - Gráficas
-===================================================== */
+   CALCULADORA DE INTEGRALES Y DERIVADAS
+   VERSIÓN CORREGIDA
+============================================================ */
 
 
-/* =====================================================
+/* ============================================================
    VARIABLES
-===================================================== */
+============================================================ */
 
 let herramientaActual = "integral";
 
 
-/* =====================================================
+/* ============================================================
    CAMBIAR ENTRE INTEGRAL Y DERIVADA
-===================================================== */
+============================================================ */
 
 function mostrarHerramienta(tipo) {
 
     herramientaActual = tipo;
-
 
     const panelIntegral =
         document.getElementById("panelIntegral");
@@ -43,268 +36,277 @@ function mostrarHerramienta(tipo) {
     if (tipo === "integral") {
 
         panelIntegral.classList.remove("hidden");
-
         panelDerivada.classList.add("hidden");
 
         tabIntegral.classList.add("active");
-
         tabDerivada.classList.remove("active");
 
-    }
-
-    else {
+    } else {
 
         panelIntegral.classList.add("hidden");
-
         panelDerivada.classList.remove("hidden");
 
         tabIntegral.classList.remove("active");
-
         tabDerivada.classList.add("active");
-
     }
-
 }
 
 
-/* =====================================================
+/* ============================================================
    NORMALIZAR FUNCIÓN
-===================================================== */
+============================================================ */
 
 function normalizarFuncion(funcion) {
 
     let f = funcion.trim();
 
-
-    /*
-       Cambiar algunos símbolos habituales
-       a sintaxis compatible.
-    */
-
     f = f.replace(/π/g, "pi");
+
+    f = f.replace(/√\s*\(/g, "sqrt(");
 
     f = f.replace(/√/g, "sqrt");
 
-    f = f.replace(/ln/g, "log");
-
-
-    /*
-       sen -> sin
-    */
-
     f = f.replace(/sen/g, "sin");
-
-
-    /*
-       coseno -> cos
-    */
-
-    f = f.replace(/coseno/g, "cos");
 
     f = f.replace(/seno/g, "sin");
 
+    f = f.replace(/coseno/g, "cos");
+
+    f = f.replace(/tg/g, "tan");
+
+    f = f.replace(/tangente/g, "tan");
+
+    /*
+       Convertir potencias escritas como x²
+    */
+
+    f = f.replace(/x²/g, "x^2");
+    f = f.replace(/x³/g, "x^3");
+    f = f.replace(/x⁴/g, "x^4");
 
     return f;
-
 }
 
 
-/* =====================================================
-   INTEGRAL DEFINIDA NUMÉRICA
-   REGLA DE SIMPSON
-===================================================== */
+/* ============================================================
+   ESCAPAR HTML
+============================================================ */
+
+function escapeHTML(texto) {
+
+    return String(texto)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
+/* ============================================================
+   FORMATEAR NÚMEROS
+============================================================ */
+
+function formatearNumero(numero) {
+
+    if (!isFinite(numero)) {
+        return "No definido";
+    }
+
+    return Number(numero)
+        .toFixed(10)
+        .replace(/\.?0+$/, "");
+}
+
+
+/* ============================================================
+   FORMATEAR EXPRESIONES
+============================================================ */
+
+function formatearExpresion(expr) {
+
+    if (expr === null || expr === undefined) {
+        return "";
+    }
+
+    let texto = String(expr);
+
+    texto = texto
+        .replace(/\*\*/g, "^")
+        .replace(/\*/g, " · ")
+        .replace(/sqrt\((.*?)\)/g, "√($1)")
+        .replace(/sin/g, "sen")
+        .replace(/log/g, "ln");
+
+    return texto;
+}
+
+
+/* ============================================================
+   EVALUAR FUNCIÓN
+============================================================ */
+
+function evaluarFuncion(funcion, x) {
+
+    try {
+
+        const resultado = math.evaluate(
+            funcion,
+            { x: x }
+        );
+
+        if (
+            typeof resultado !== "number" ||
+            !isFinite(resultado)
+        ) {
+
+            return null;
+        }
+
+        return resultado;
+
+    } catch {
+
+        return null;
+    }
+}
+
+
+/* ============================================================
+   MÉTODO DE SIMPSON
+============================================================ */
 
 function simpson(funcion, a, b, n = 2000) {
 
-    if (n % 2 !== 0) {
-
-        n++;
-
+    if (a === b) {
+        return 0;
     }
 
+    if (n % 2 !== 0) {
+        n++;
+    }
 
     const h = (b - a) / n;
 
     let suma = 0;
 
-
     for (let i = 0; i <= n; i++) {
 
         const x = a + i * h;
 
-        let fx;
+        const fx = evaluarFuncion(funcion, x);
 
-
-        try {
-
-            fx = math.evaluate(
-                funcion,
-                { x: x }
-            );
-
-        }
-
-        catch {
+        if (fx === null) {
 
             throw new Error(
-                "No se pudo evaluar la función."
+                "La función no puede evaluarse en todo el intervalo."
             );
-
         }
 
-
-        if (
-            typeof fx !== "number" ||
-            !isFinite(fx)
-        ) {
-
-            throw new Error(
-                "La función contiene valores no válidos."
-            );
-
-        }
-
-
-        if (
-            i === 0 ||
-            i === n
-        ) {
+        if (i === 0 || i === n) {
 
             suma += fx;
 
-        }
-
-        else if (i % 2 === 0) {
+        } else if (i % 2 === 0) {
 
             suma += 2 * fx;
 
-        }
-
-        else {
+        } else {
 
             suma += 4 * fx;
-
         }
-
     }
 
-
     return (h / 3) * suma;
-
 }
 
 
-/* =====================================================
-   CALCULAR INTEGRAL
-===================================================== */
+/* ============================================================
+   INTEGRAL
+============================================================ */
 
 function calcularIntegral() {
 
     const campoFuncion =
-        document.getElementById(
-            "integralFuncion"
-        );
+        document.getElementById("integralFuncion");
 
     const campoA =
-        document.getElementById(
-            "integralA"
-        );
+        document.getElementById("integralA");
 
     const campoB =
-        document.getElementById(
-            "integralB"
-        );
+        document.getElementById("integralB");
+
+    const resultado =
+        document.getElementById("resultadoIntegral");
+
+    const procedimiento =
+        document.getElementById("procedimientoIntegral");
 
 
     const funcionOriginal =
         campoFuncion.value.trim();
 
-
     const a =
         parseFloat(campoA.value);
-
 
     const b =
         parseFloat(campoB.value);
 
 
-    const resultado =
-        document.getElementById(
-            "resultadoIntegral"
-        );
-
-
-    const procedimiento =
-        document.getElementById(
-            "procedimientoIntegral"
-        );
-
+    /* --------------------------------------------------------
+       VALIDACIONES
+    -------------------------------------------------------- */
 
     if (!funcionOriginal) {
 
         resultado.innerHTML = `
             <div class="error-message">
-                ⚠️ Introduce una función.
+                ⚠️ Debes introducir una función.
             </div>
         `;
 
-        return;
+        procedimiento.innerHTML = "";
 
+        return;
     }
 
 
-    if (
-        isNaN(a) ||
-        isNaN(b)
-    ) {
+    if (isNaN(a) || isNaN(b)) {
 
         resultado.innerHTML = `
             <div class="error-message">
-                ⚠️ Introduce los límites.
+                ⚠️ Debes introducir los dos límites.
             </div>
         `;
 
-        return;
+        procedimiento.innerHTML = "";
 
+        return;
     }
 
 
     const funcion =
-        normalizarFuncion(
-            funcionOriginal
-        );
+        normalizarFuncion(funcionOriginal);
 
 
     try {
 
+        /* ----------------------------------------------------
+           VALIDAR FUNCIÓN
+        ---------------------------------------------------- */
 
-        /* ==========================================
-           INTEGRACIÓN SIMBÓLICA
-        ========================================== */
+        const prueba =
+            evaluarFuncion(funcion, a);
 
-        let antiderivada = "";
-
-
-        try {
-
-            antiderivada =
-                nerdamer(
-                    `integrate(${funcion},x)`
-                ).toString();
-
-        }
-
-        catch {
-
-            antiderivada =
-                "No disponible simbólicamente";
-
-        }
+        /*
+           No rechazamos automáticamente si el extremo
+           no está definido. La integral puede existir.
+        */
 
 
-        /* ==========================================
-           INTEGRACIÓN NUMÉRICA
-        ========================================== */
+        /* ----------------------------------------------------
+           CALCULAR INTEGRAL
+        ---------------------------------------------------- */
 
         const valor =
             simpson(
@@ -315,16 +317,18 @@ function calcularIntegral() {
             );
 
 
-        /* ==========================================
+        /* ----------------------------------------------------
            MOSTRAR RESULTADO
-        ========================================== */
+        ---------------------------------------------------- */
 
         resultado.innerHTML = `
 
             <div>
+
                 <strong>
                     Integral definida
                 </strong>
+
             </div>
 
             <div class="result-symbolic">
@@ -343,55 +347,23 @@ function calcularIntegral() {
         `;
 
 
-        /* ==========================================
+        /* ----------------------------------------------------
            PROCEDIMIENTO
-        ========================================== */
+        ---------------------------------------------------- */
 
-        procedimiento.innerHTML = `
-
-            <h4>
-                📐 Información del cálculo
-            </h4>
-
-            <p>
-                <strong>Función:</strong>
-                f(x) = ${escapeHTML(funcionOriginal)}
-            </p>
-
-            <p>
-                <strong>Límite inferior:</strong>
-                ${a}
-            </p>
-
-            <p>
-                <strong>Límite superior:</strong>
-                ${b}
-            </p>
-
-            <p>
-                <strong>Antiderivada:</strong>
-                ${escapeHTML(
-                    convertirSalida(antiderivada)
-                )}
-                + C
-            </p>
-
-            <p>
-                <strong>Método numérico:</strong>
-                Regla de Simpson
-            </p>
-
-            <p>
-                <strong>Resultado:</strong>
-                ${formatearNumero(valor)}
-            </p>
-
-        `;
+        procedimiento.innerHTML =
+            generarProcedimientoIntegral(
+                funcionOriginal,
+                funcion,
+                a,
+                b,
+                valor
+            );
 
 
-        /* ==========================================
+        /* ----------------------------------------------------
            GRÁFICA
-        ========================================== */
+        ---------------------------------------------------- */
 
         graficarIntegral(
             funcion,
@@ -403,6 +375,8 @@ function calcularIntegral() {
 
     catch (error) {
 
+        console.error(error);
+
         resultado.innerHTML = `
 
             <div class="error-message">
@@ -411,23 +385,398 @@ function calcularIntegral() {
 
                 <br><br>
 
-                Verifica que la función esté escrita
-                correctamente.
+                Revisa la función y los límites.
+
+                <br><br>
+
+                Ejemplo:
+
+                <strong>
+                    x^2
+                </strong>
 
             </div>
 
         `;
 
         procedimiento.innerHTML = "";
-
     }
-
 }
 
 
-/* =====================================================
-   CALCULAR DERIVADA
-===================================================== */
+/* ============================================================
+   GENERAR PROCEDIMIENTO DE INTEGRAL
+============================================================ */
+
+function generarProcedimientoIntegral(
+    funcionOriginal,
+    funcion,
+    a,
+    b,
+    valor
+) {
+
+    const antiderivada =
+        obtenerAntiderivadaComun(funcion);
+
+
+    let html = `
+
+        <h4>
+            📐 Procedimiento de la integral
+        </h4>
+
+        <p>
+            <strong>Paso 1. Identificar la función:</strong>
+        </p>
+
+        <p>
+            f(x) =
+            ${escapeHTML(funcionOriginal)}
+        </p>
+
+    `;
+
+
+    /* --------------------------------------------------------
+       SI ENCONTRAMOS ANTIDERIVADA
+    -------------------------------------------------------- */
+
+    if (antiderivada) {
+
+        html += `
+
+            <p>
+                <strong>Paso 2. Encontrar la antiderivada:</strong>
+            </p>
+
+            <p>
+
+                ∫ ${escapeHTML(funcionOriginal)} dx
+
+                =
+
+                ${escapeHTML(
+                    antiderivada
+                )}
+
+                + C
+
+            </p>
+
+            <p>
+                <strong>Paso 3. Aplicar el teorema
+                fundamental del cálculo:</strong>
+            </p>
+
+            <p>
+
+                ∫<sub>${a}</sub><sup>${b}</sup>
+                f(x) dx
+
+                =
+
+                F(${b}) - F(${a})
+
+            </p>
+
+        `;
+
+
+        const evaluacion =
+            evaluarAntiderivada(
+                funcion,
+                a,
+                b
+            );
+
+
+        if (evaluacion) {
+
+            html += `
+
+                <p>
+                    <strong>Paso 4. Sustituir los límites:</strong>
+                </p>
+
+                <p>
+
+                    F(${b}) - F(${a})
+                    =
+
+                    ${escapeHTML(
+                        evaluacion.fb
+                    )}
+
+                    -
+
+                    ${escapeHTML(
+                        evaluacion.fa
+                    )}
+
+                </p>
+
+                <p>
+
+                    <strong>
+                        Resultado:
+                    </strong>
+
+                    ${formatearNumero(valor)}
+
+                </p>
+
+            `;
+        }
+
+
+    } else {
+
+        /* ----------------------------------------------------
+           PROCEDIMIENTO NUMÉRICO
+        ---------------------------------------------------- */
+
+        html += `
+
+            <p>
+                <strong>Paso 2. Método utilizado:</strong>
+            </p>
+
+            <p>
+                Debido a que la función no tiene una
+                antiderivada común implementada en el
+                calculador, se utiliza la
+                <strong>Regla de Simpson</strong>.
+            </p>
+
+            <p>
+                <strong>Paso 3. Fórmula:</strong>
+            </p>
+
+            <p>
+
+                ∫<sub>a</sub><sup>b</sup> f(x) dx
+                ≈
+                h/3 [f(x₀) + 4f(x₁) + 2f(x₂) + ... + f(xₙ)]
+
+            </p>
+
+            <p>
+
+                Con:
+
+                <br>
+
+                h = (b - a) / n
+
+            </p>
+
+            <p>
+
+                En este cálculo se utilizaron
+                <strong>2000 subdivisiones</strong>.
+
+            </p>
+
+            <p>
+
+                <strong>
+                    Resultado aproximado:
+                </strong>
+
+                ${formatearNumero(valor)}
+
+            </p>
+
+        `;
+    }
+
+
+    return html;
+}
+
+
+/* ============================================================
+   ANTIDERIVADAS COMUNES
+============================================================ */
+
+function obtenerAntiderivadaComun(funcion) {
+
+    const f =
+        funcion.replace(/\s+/g, "");
+
+
+    /* x^n */
+
+    let match =
+        f.match(/^x\^(-?\d+(?:\.\d+)?)$/);
+
+
+    if (match) {
+
+        const n =
+            parseFloat(match[1]);
+
+        if (n !== -1) {
+
+            const nuevoExponente =
+                n + 1;
+
+            return `
+                x^${nuevoExponente}/${nuevoExponente}
+            `;
+        }
+
+        return "ln(|x|)";
+    }
+
+
+    /* x */
+
+    if (f === "x") {
+
+        return "x^2/2";
+    }
+
+
+    /* constantes */
+
+    if (
+        /^-?\d+(?:\.\d+)?$/.test(f)
+    ) {
+
+        return `${f}x`;
+    }
+
+
+    /* sin(x) */
+
+    if (f === "sin(x)") {
+
+        return "-cos(x)";
+    }
+
+
+    /* cos(x) */
+
+    if (f === "cos(x)") {
+
+        return "sin(x)";
+    }
+
+
+    /* tan(x) */
+
+    if (f === "tan(x)") {
+
+        return "-ln(|cos(x)|)";
+    }
+
+
+    /* exp(x) */
+
+    if (f === "exp(x)") {
+
+        return "exp(x)";
+    }
+
+
+    /* e^x */
+
+    if (
+        f === "e^x" ||
+        f === "exp(x)"
+    ) {
+
+        return "e^x";
+    }
+
+
+    /* 1/x */
+
+    if (
+        f === "1/x"
+    ) {
+
+        return "ln(|x|)";
+    }
+
+
+    return null;
+}
+
+
+/* ============================================================
+   EVALUAR ANTIDERIVADA COMÚN
+============================================================ */
+
+function evaluarAntiderivada(
+    funcion,
+    a,
+    b
+) {
+
+    const antiderivada =
+        obtenerAntiderivadaComun(
+            funcion
+        );
+
+
+    if (!antiderivada) {
+
+        return null;
+    }
+
+
+    let fa;
+
+    let fb;
+
+
+    try {
+
+        const expresion =
+            antiderivada
+                .replace(/\|x\|/g, "abs(x)")
+                .replace(/ln/g, "log");
+
+
+        fa =
+            math.evaluate(
+                expresion,
+                { x: a }
+            );
+
+
+        fb =
+            math.evaluate(
+                expresion,
+                { x: b }
+            );
+
+
+        return {
+
+            fa:
+                formatearNumero(fa),
+
+            fb:
+                formatearNumero(fb)
+
+        };
+
+    }
+
+    catch {
+
+        return null;
+    }
+}
+
+
+/* ============================================================
+   DERIVADA
+============================================================ */
 
 function calcularDerivada() {
 
@@ -436,10 +785,19 @@ function calcularDerivada() {
             "derivadaFuncion"
         );
 
-
     const campoOrden =
         document.getElementById(
             "ordenDerivada"
+        );
+
+    const resultado =
+        document.getElementById(
+            "resultadoDerivada"
+        );
+
+    const procedimiento =
+        document.getElementById(
+            "procedimientoDerivada"
         );
 
 
@@ -453,17 +811,9 @@ function calcularDerivada() {
         );
 
 
-    const resultado =
-        document.getElementById(
-            "resultadoDerivada"
-        );
-
-
-    const procedimiento =
-        document.getElementById(
-            "procedimientoDerivada"
-        );
-
+    /* --------------------------------------------------------
+       VALIDACIÓN
+    -------------------------------------------------------- */
 
     if (!funcionOriginal) {
 
@@ -471,14 +821,15 @@ function calcularDerivada() {
 
             <div class="error-message">
 
-                ⚠️ Introduce una función.
+                ⚠️ Debes introducir una función.
 
             </div>
 
         `;
 
-        return;
+        procedimiento.innerHTML = "";
 
+        return;
     }
 
 
@@ -490,63 +841,60 @@ function calcularDerivada() {
 
     try {
 
+        /* ----------------------------------------------------
+           CREAR EXPRESIÓN
+        ---------------------------------------------------- */
 
-        /* ==========================================
-           PRIMERA DERIVADA
-        ========================================== */
-
-        let derivada =
-            nerdamer(
-                `diff(${funcion},x)`
-            );
+        let expresion =
+            math.parse(funcion);
 
 
-        let derivadaTexto =
-            derivada.toString();
+        /*
+           Calcular las derivadas sucesivamente
+        */
 
+        const resultados = [];
 
-        /* ==========================================
-           DERIVADAS DE ORDEN SUPERIOR
-        ========================================== */
 
         for (
             let i = 1;
-            i < orden;
+            i <= orden;
             i++
         ) {
 
-            derivada =
-                nerdamer(
-                    `diff(${derivadaTexto},x)`
+            expresion =
+                math.derivative(
+                    expresion,
+                    "x"
                 );
 
 
-            derivadaTexto =
-                derivada.toString();
-
+            resultados.push(
+                expresion.toString()
+            );
         }
 
 
-        /* ==========================================
-           RESULTADO
-        ========================================== */
+        const derivadaFinal =
+            resultados[
+                resultados.length - 1
+            ];
 
-        const nombreOrden =
-            obtenerNombreOrden(
-                orden
-            );
 
+        /* ----------------------------------------------------
+           MOSTRAR RESULTADO
+        ---------------------------------------------------- */
 
         resultado.innerHTML = `
 
             <div>
 
                 <strong>
-                    ${nombreOrden} derivada
+                    ${obtenerNombreOrden(orden)}
+                    derivada
                 </strong>
 
             </div>
-
 
             <div class="result-symbolic">
 
@@ -555,12 +903,11 @@ function calcularDerivada() {
 
             </div>
 
-
             <div class="result-main">
 
                 ${escapeHTML(
-                    convertirSalida(
-                        derivadaTexto
+                    formatearExpresion(
+                        derivadaFinal
                     )
                 )}
 
@@ -569,75 +916,25 @@ function calcularDerivada() {
         `;
 
 
-        /* ==========================================
+        /* ----------------------------------------------------
            PROCEDIMIENTO
-        ========================================== */
+        ---------------------------------------------------- */
 
-        procedimiento.innerHTML = `
-
-            <h4>
-                📐 Procedimiento
-            </h4>
-
-
-            <p>
-
-                <strong>
-                    Función original:
-                </strong>
-
-                f(x) =
-                ${escapeHTML(funcionOriginal)}
-
-            </p>
+        procedimiento.innerHTML =
+            generarProcedimientoDerivada(
+                funcionOriginal,
+                resultados,
+                orden
+            );
 
 
-            <p>
-
-                <strong>
-                    Orden:
-                </strong>
-
-                ${orden}
-
-            </p>
-
-
-            <p>
-
-                <strong>
-                    Operación realizada:
-                </strong>
-
-                ${obtenerDescripcionDerivada(orden)}
-
-            </p>
-
-
-            <p>
-
-                <strong>
-                    Resultado:
-                </strong>
-
-                ${escapeHTML(
-                    convertirSalida(
-                        derivadaTexto
-                    )
-                )}
-
-            </p>
-
-        `;
-
-
-        /* ==========================================
+        /* ----------------------------------------------------
            GRÁFICA
-        ========================================== */
+        ---------------------------------------------------- */
 
         graficarDerivada(
             funcion,
-            derivadaTexto,
+            derivadaFinal,
             orden
         );
 
@@ -645,7 +942,10 @@ function calcularDerivada() {
 
     catch (error) {
 
-        console.error(error);
+        console.error(
+            "ERROR DERIVADA:",
+            error
+        );
 
 
         resultado.innerHTML = `
@@ -656,32 +956,146 @@ function calcularDerivada() {
 
                 <br><br>
 
-                Revisa que la función esté escrita
+                Verifica que la función esté escrita
                 correctamente.
 
                 <br><br>
 
-                Ejemplo:
-
                 <strong>
-                    x^3 + 2*x^2 - 5*x + 1
+                    Ejemplos válidos:
                 </strong>
+
+                <br>
+
+                x^3 + 2*x
+
+                <br>
+
+                sin(x)
+
+                <br>
+
+                cos(x)
+
+                <br>
+
+                exp(x)
+
+                <br>
+
+                ln(x)
 
             </div>
 
         `;
 
-
         procedimiento.innerHTML = "";
-
     }
-
 }
 
 
-/* =====================================================
-   NOMBRE DEL ORDEN
-===================================================== */
+/* ============================================================
+   PROCEDIMIENTO DERIVADA
+============================================================ */
+
+function generarProcedimientoDerivada(
+    funcionOriginal,
+    resultados,
+    orden
+) {
+
+    let html = `
+
+        <h4>
+            📐 Procedimiento de la derivada
+        </h4>
+
+        <p>
+
+            <strong>
+                Función original:
+            </strong>
+
+            f(x) =
+            ${escapeHTML(funcionOriginal)}
+
+        </p>
+
+    `;
+
+
+    for (
+        let i = 0;
+        i < resultados.length;
+        i++
+    ) {
+
+        const numero =
+            i + 1;
+
+
+        html += `
+
+            <p>
+
+                <strong>
+                    Paso ${numero}:
+                </strong>
+
+                ${obtenerNombreOrden(numero)}
+                derivada.
+
+            </p>
+
+            <p>
+
+                ${numero === 1
+                    ? "f'(x)"
+                    : "f^(" + numero + ")(x)"
+                }
+
+                =
+
+                ${escapeHTML(
+                    formatearExpresion(
+                        resultados[i]
+                    )
+                )}
+
+            </p>
+
+        `;
+    }
+
+
+    html += `
+
+        <p>
+
+            <strong>
+                Resultado final:
+            </strong>
+
+            Derivada de orden ${orden}:
+
+            ${escapeHTML(
+                formatearExpresion(
+                    resultados[orden - 1]
+                )
+            )}
+
+        </p>
+
+    `;
+
+
+    return html;
+}
+
+
+/* ============================================================
+   NOMBRE DE ORDEN
+============================================================ */
 
 function obtenerNombreOrden(orden) {
 
@@ -699,38 +1113,13 @@ function obtenerNombreOrden(orden) {
 
 
     return nombres[orden] ||
-           `${orden}ª`;
-
+        `${orden}ª`;
 }
 
 
-/* =====================================================
-   DESCRIPCIÓN DE DERIVADA
-===================================================== */
-
-function obtenerDescripcionDerivada(orden) {
-
-    if (orden === 1) {
-
-        return `
-            Se calculó la primera derivada
-            respecto a x.
-        `;
-
-    }
-
-
-    return `
-        Se calcularon ${orden}
-        derivaciones sucesivas respecto a x.
-    `;
-
-}
-
-
-/* =====================================================
+/* ============================================================
    GRÁFICA DE INTEGRAL
-===================================================== */
+============================================================ */
 
 function graficarIntegral(
     funcion,
@@ -738,19 +1127,34 @@ function graficarIntegral(
     b
 ) {
 
+    let rango =
+        Math.abs(b - a);
+
+
+    if (
+        !isFinite(rango) ||
+        rango === 0
+    ) {
+
+        rango = 5;
+    }
+
+
+    const margen =
+        rango * 0.15;
+
+
     const inicio =
         Math.min(a, b) -
-        Math.abs(b - a) * 0.15 -
-        0.01;
+        margen;
 
 
     const fin =
         Math.max(a, b) +
-        Math.abs(b - a) * 0.15 +
-        0.01;
+        margen;
 
 
-    const cantidad = 500;
+    const cantidad = 600;
 
 
     const x = [];
@@ -773,43 +1177,18 @@ function graficarIntegral(
 
         x.push(valor);
 
-
-        try {
-
-            const resultado =
-                math.evaluate(
-                    funcion,
-                    { x: valor }
-                );
-
-
-            if (
-                typeof resultado === "number" &&
-                isFinite(resultado)
-            ) {
-
-                y.push(resultado);
-
-            }
-
-            else {
-
-                y.push(null);
-
-            }
-
-        }
-
-        catch {
-
-            y.push(null);
-
-        }
-
+        y.push(
+            evaluarFuncion(
+                funcion,
+                valor
+            )
+        );
     }
 
 
-    /* ÁREA */
+    /* --------------------------------------------------------
+       ÁREA
+    -------------------------------------------------------- */
 
     const xArea = [];
 
@@ -831,25 +1210,32 @@ function graficarIntegral(
 
         xArea.push(valor);
 
-
-        try {
-
-            yArea.push(
-                math.evaluate(
-                    funcion,
-                    { x: valor }
-                )
-            );
-
-        }
-
-        catch {
-
-            yArea.push(null);
-
-        }
-
+        yArea.push(
+            evaluarFuncion(
+                funcion,
+                valor
+            )
+        );
     }
+
+
+    const traceArea = {
+
+        x: xArea,
+
+        y: yArea,
+
+        type: "scatter",
+
+        mode: "lines",
+
+        fill: "tozeroy",
+
+        name: "Área",
+
+        opacity: 0.35
+
+    };
 
 
     const traceFuncion = {
@@ -873,29 +1259,10 @@ function graficarIntegral(
     };
 
 
-    const traceArea = {
-
-        x: xArea,
-
-        y: yArea,
-
-        type: "scatter",
-
-        mode: "lines",
-
-        fill: "tozeroy",
-
-        name: "Área",
-
-        opacity: 0.35
-
-    };
-
-
     const layout = {
 
         title:
-            "Integral y área bajo la curva",
+            "Gráfica de la integral y área bajo la curva",
 
         xaxis: {
 
@@ -943,8 +1310,11 @@ function graficarIntegral(
         layout,
 
         {
+
             responsive: true,
+
             displaylogo: false
+
         }
 
     );
@@ -954,13 +1324,12 @@ function graficarIntegral(
         "graphDescription"
     ).textContent =
         "Función y área de integración";
-
 }
 
 
-/* =====================================================
+/* ============================================================
    GRÁFICA DE DERIVADA
-===================================================== */
+============================================================ */
 
 function graficarDerivada(
     funcion,
@@ -972,7 +1341,7 @@ function graficarDerivada(
 
     const fin = 10;
 
-    const cantidad = 500;
+    const cantidad = 600;
 
 
     const x = [];
@@ -998,71 +1367,20 @@ function graficarDerivada(
         x.push(valor);
 
 
-        try {
-
-            const f =
-                math.evaluate(
-                    funcion,
-                    { x: valor }
-                );
-
-
-            if (
-                typeof f === "number" &&
-                isFinite(f)
-            ) {
-
-                yFuncion.push(f);
-
-            }
-
-            else {
-
-                yFuncion.push(null);
-
-            }
-
-        }
-
-        catch {
-
-            yFuncion.push(null);
-
-        }
+        yFuncion.push(
+            evaluarFuncion(
+                funcion,
+                valor
+            )
+        );
 
 
-        try {
-
-            const d =
-                math.evaluate(
-                    derivada,
-                    { x: valor }
-                );
-
-
-            if (
-                typeof d === "number" &&
-                isFinite(d)
-            ) {
-
-                yDerivada.push(d);
-
-            }
-
-            else {
-
-                yDerivada.push(null);
-
-            }
-
-        }
-
-        catch {
-
-            yDerivada.push(null);
-
-        }
-
+        yDerivada.push(
+            evaluarFuncion(
+                derivada,
+                valor
+            )
+        );
     }
 
 
@@ -1097,7 +1415,8 @@ function graficarDerivada(
 
         mode: "lines",
 
-        name: `Derivada orden ${orden}`,
+        name:
+            `Derivada orden ${orden}`,
 
         line: {
 
@@ -1161,8 +1480,11 @@ function graficarDerivada(
         layout,
 
         {
+
             responsive: true,
+
             displaylogo: false
+
         }
 
     );
@@ -1172,13 +1494,12 @@ function graficarDerivada(
         "graphDescription"
     ).textContent =
         "Función original y derivada";
-
 }
 
 
-/* =====================================================
-   EJEMPLO INTEGRAL
-===================================================== */
+/* ============================================================
+   EJEMPLOS DE INTEGRALES
+============================================================ */
 
 function ejemploIntegral(
     funcion,
@@ -1207,13 +1528,12 @@ function ejemploIntegral(
 
 
     calcularIntegral();
-
 }
 
 
-/* =====================================================
-   EJEMPLO DERIVADA
-===================================================== */
+/* ============================================================
+   EJEMPLOS DE DERIVADAS
+============================================================ */
 
 function ejemploDerivada(
     funcion
@@ -1235,13 +1555,12 @@ function ejemploDerivada(
 
 
     calcularDerivada();
-
 }
 
 
-/* =====================================================
+/* ============================================================
    LIMPIAR INTEGRAL
-===================================================== */
+============================================================ */
 
 function limpiarIntegral() {
 
@@ -1262,8 +1581,12 @@ function limpiarIntegral() {
 
     document.getElementById(
         "resultadoIntegral"
-    ).innerHTML =
-        "Introduce una función y presiona \"Calcular integral\".";
+    ).innerHTML = `
+
+        Introduce una función y presiona
+        "Calcular integral".
+
+    `;
 
 
     document.getElementById(
@@ -1271,22 +1594,28 @@ function limpiarIntegral() {
     ).innerHTML = "";
 
 
-    Plotly.purge(
-        "grafica"
-    );
+    if (
+        document.getElementById(
+            "grafica"
+        )
+    ) {
+
+        Plotly.purge(
+            "grafica"
+        );
+    }
 
 
     document.getElementById(
         "graphDescription"
     ).textContent =
         "Esperando cálculo...";
-
 }
 
 
-/* =====================================================
+/* ============================================================
    LIMPIAR DERIVADA
-===================================================== */
+============================================================ */
 
 function limpiarDerivada() {
 
@@ -1297,8 +1626,12 @@ function limpiarDerivada() {
 
     document.getElementById(
         "resultadoDerivada"
-    ).innerHTML =
-        "Introduce una función y presiona \"Calcular derivada\".";
+    ).innerHTML = `
+
+        Introduce una función y presiona
+        "Calcular derivada".
+
+    `;
 
 
     document.getElementById(
@@ -1306,81 +1639,32 @@ function limpiarDerivada() {
     ).innerHTML = "";
 
 
-    Plotly.purge(
-        "grafica"
-    );
+    if (
+        document.getElementById(
+            "grafica"
+        )
+    ) {
+
+        Plotly.purge(
+            "grafica"
+        );
+    }
 
 
     document.getElementById(
         "graphDescription"
     ).textContent =
         "Esperando cálculo...";
-
 }
 
 
-/* =====================================================
-   FORMATEAR NÚMERO
-===================================================== */
-
-function formatearNumero(numero) {
-
-    if (!isFinite(numero)) {
-
-        return "No definido";
-
-    }
-
-
-    return Number(numero)
-        .toFixed(10)
-        .replace(/\.?0+$/, "");
-
-}
-
-
-/* =====================================================
-   CONVERTIR SALIDA NERDAMER
-===================================================== */
-
-function convertirSalida(
-    texto
-) {
-
-    return texto
-        .replace(/\*\*/g, "^")
-        .replace(/\*/g, " · ")
-        .replace(/log/g, "ln");
-
-}
-
-
-/* =====================================================
-   SEGURIDAD HTML
-===================================================== */
-
-function escapeHTML(
-    texto
-) {
-
-    return String(texto)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-
-}
-
-
-/* =====================================================
-   ENTER PARA CALCULAR
-===================================================== */
+/* ============================================================
+   TECLAS ENTER
+============================================================ */
 
 document.addEventListener(
     "DOMContentLoaded",
     function () {
-
 
         const integralInput =
             document.getElementById(
@@ -1410,7 +1694,6 @@ document.addEventListener(
 
                 }
             );
-
         }
 
 
@@ -1430,12 +1713,11 @@ document.addEventListener(
 
                 }
             );
-
         }
 
 
         /*
-           Ejecutar ejemplo inicial
+           Cálculo inicial
         */
 
         calcularIntegral();
