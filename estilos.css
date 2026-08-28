@@ -1,67 +1,642 @@
 /* =====================================================
-   HERRAMIENTAS MATEMÁTICAS
+   AYUDAS ACADÉMICAS
+   ESTILOS PRINCIPALES
 ===================================================== */
 
-.math-tabs {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    max-width: 600px;
+html {
+    scroll-behavior: smooth;
+}
 
-    margin: 0 auto 35px;
+body {
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #102a56;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+
+/* =====================================================
+   COLORES
+===================================================== */
+
+:root {
+
+    --azul: #071f49;
+
+    --azul-medio: #0b326f;
+
+    --azul-claro: #174d9a;
+
+    --dorado: #d69a1b;
+
+    --dorado-claro: #f2c45d;
+
+    --verde: #16a34a;
+
+    --verde-hover: #12813b;
+
+    --blanco: #ffffff;
+
+    --gris: #64748b;
+
+    --gris-claro: #eef2f7;
+
+    --borde: #dbe2ea;
+
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 9999;
+
+    background: var(--azul);
+
+    box-shadow:
+        0 3px 15px rgba(0, 0, 0, 0.15);
+
+}
+
+.navbar-inner {
+
+    width: 92%;
+
+    max-width: 1250px;
+
+    min-height: 76px;
+
+    margin: auto;
 
     display: flex;
 
-    background: white;
+    align-items: center;
 
-    padding: 6px;
+    justify-content: space-between;
 
-    border-radius: 50px;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,0.08);
+    gap: 20px;
 
 }
 
+.brand {
 
-.math-tab {
+    display: flex;
 
-    flex: 1;
+    align-items: center;
 
-    border: none;
-
-    background: transparent;
-
-    padding: 15px 25px;
-
-    border-radius: 40px;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    color: #64748b;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-
-}
-
-
-.math-tab.active {
-
-    background: #061b49;
+    gap: 12px;
 
     color: white;
 
-    box-shadow:
-        0 5px 15px rgba(6,27,73,0.25);
+}
+
+.brand img {
+
+    width: 58px;
+
+    height: 58px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+}
+
+.brand-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    line-height: 1;
+
+}
+
+.brand-text strong {
+
+    font-size: 19px;
+
+    letter-spacing: 1px;
+
+}
+
+.brand-text span {
+
+    color: var(--dorado-claro);
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    margin-top: 5px;
+
+}
+
+.menu {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+}
+
+.menu a {
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition: 0.25s;
+
+}
+
+.menu a:hover {
+
+    color: var(--dorado-claro);
+
+}
+
+.nav-whatsapp {
+
+    background: var(--dorado);
+
+    color: white;
+
+    padding: 10px 20px;
+
+    border-radius: 30px;
+
+    font-weight: bold;
+
+    transition: 0.25s;
+
+}
+
+.nav-whatsapp:hover {
+
+    transform: translateY(-2px);
+
+    background: #e5a923;
 
 }
 
 
-.math-tool {
+/* =====================================================
+   HERO
+===================================================== */
 
-    display: none;
+.hero {
+
+    background:
+
+        radial-gradient(
+            circle at 85% 30%,
+            rgba(35, 86, 155, 0.55),
+            transparent 32%
+        ),
+
+        linear-gradient(
+            135deg,
+            #03132e,
+            #0b326f
+        );
+
+    color: white;
+
+    padding: 90px 20px;
+
+    overflow: hidden;
+
+}
+
+.hero-inner {
+
+    width: 92%;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.4fr)
+        minmax(300px, 0.6fr);
+
+    gap: 70px;
+
+    align-items: center;
+
+}
+
+.hero-label {
+
+    color: var(--dorado-claro);
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+
+}
+
+.hero h1 {
+
+    font-size: clamp(52px, 7vw, 88px);
+
+    line-height: 0.95;
+
+    font-weight: 900;
+
+    margin-bottom: 25px;
+
+}
+
+.hero h1 span {
+
+    display: block;
+
+    color: var(--dorado);
+
+}
+
+.hero h2 {
+
+    font-size: 25px;
+
+    max-width: 700px;
+
+    margin-bottom: 18px;
+
+}
+
+.hero-content > p {
+
+    max-width: 650px;
+
+    color: #d9e5f7;
+
+    font-size: 18px;
+
+}
+
+.hero-buttons {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin-top: 30px;
+
+}
+
+.button {
+
+    padding: 14px 23px;
+
+    border-radius: 30px;
+
+    font-weight: bold;
+
+    transition: 0.25s;
+
+}
+
+.button:hover {
+
+    transform: translateY(-3px);
+
+}
+
+.button-gold {
+
+    background: var(--dorado);
+
+    color: white;
+
+}
+
+.button-green {
+
+    background: var(--verde);
+
+    color: white;
+
+}
+
+.hero-benefits {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 25px;
+
+    margin-top: 35px;
+
+    color: #d9e5f7;
+
+    font-size: 14px;
+
+}
+
+.hero-benefits div::first-letter {
+
+    color: var(--dorado);
+
+}
+
+
+/* =====================================================
+   WHATSAPP CARD
+===================================================== */
+
+.whatsapp-card {
+
+    background: rgba(255,255,255,0.09);
+
+    border: 1px solid
+            rgba(242,196,93,0.7);
+
+    border-radius: 25px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.3);
+
+}
+
+.whatsapp-title {
+
+    font-size: 35px;
+
+}
+
+.whatsapp-card h3 {
+
+    font-size: 27px;
+
+    margin: 5px 0;
+
+}
+
+.whatsapp-card > p {
+
+    color: #d9e5f7;
+
+}
+
+.qr-image {
+
+    display: block;
+
+    width: 190px;
+
+    height: 190px;
+
+    padding: 10px;
+
+    margin: 20px auto;
+
+    object-fit: contain;
+
+    background: white;
+
+    border-radius: 15px;
+
+}
+
+.whatsapp-button {
+
+    display: block;
+
+    background: var(--verde);
+
+    color: white;
+
+    padding: 13px 15px;
+
+    border-radius: 30px;
+
+    font-weight: bold;
+
+    transition: 0.25s;
+
+}
+
+.whatsapp-button:hover {
+
+    background: var(--verde-hover);
+
+    transform: scale(1.03);
+
+}
+
+.whatsapp-number {
+
+    margin-top: 13px;
+
+    color: #d9e5f7;
+
+    font-size: 14px;
+
+}
+
+
+/* =====================================================
+   TÍTULOS DE SECCIÓN
+===================================================== */
+
+.section-title {
+
+    text-align: center;
+
+    margin-bottom: 50px;
+
+}
+
+.section-title span {
+
+    color: var(--dorado);
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+}
+
+.section-title h2 {
+
+    color: var(--azul);
+
+    font-size: 40px;
+
+    margin: 8px 0;
+
+}
+
+.section-title p {
+
+    color: var(--gris);
+
+    max-width: 700px;
+
+    margin: auto;
+
+}
+
+
+/* =====================================================
+   SERVICIOS
+===================================================== */
+
+.services-section {
+
+    width: 92%;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 90px 0;
+
+}
+
+.services-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+
+}
+
+.service {
+
+    background: white;
+
+    border: 1px solid var(--borde);
+
+    border-radius: 18px;
+
+    padding: 30px 25px;
+
+    text-align: center;
+
+    transition: 0.3s;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.05);
+
+}
+
+.service:hover {
+
+    transform: translateY(-7px);
+
+    border-color: var(--dorado);
+
+    box-shadow:
+        0 15px 35px rgba(7,31,73,0.12);
+
+}
+
+.service-icon {
+
+    width: 65px;
+
+    height: 65px;
+
+    margin: auto auto 18px;
+
+    border-radius: 18px;
+
+    background: #edf4ff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 30px;
+
+}
+
+.service h3 {
+
+    margin-bottom: 10px;
+
+    color: var(--azul);
+
+}
+
+.service p {
+
+    color: var(--gris);
+
+}
+
+
+/* =====================================================
+   HERRAMIENTAS
+===================================================== */
+
+.tools-section {
+
+    padding: 90px 20px;
+
+    background: #edf2f8;
+
+}
+
+.calculator {
+
+    width: 92%;
 
     max-width: 1100px;
 
@@ -70,184 +645,726 @@
 }
 
 
-.math-tool.active {
+/* =====================================================
+   TABS
+===================================================== */
 
-    display: block;
+.calculator-tabs {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    background: white;
+
+    border-radius: 18px 18px 0 0;
+
+    overflow: hidden;
 
 }
 
+.tab {
 
-.tool-title {
+    border: none;
 
-    display: flex;
+    background: white;
 
-    align-items: center;
+    padding: 20px;
 
-    gap: 18px;
+    cursor: pointer;
 
-    margin-bottom: 25px;
+    font-size: 20px;
+
+    font-weight: bold;
+
+    color: var(--gris);
+
+    transition: 0.25s;
 
 }
 
+.tab span {
 
-.big-symbol {
+    margin-left: 8px;
 
-    width: 70px;
+}
 
-    height: 70px;
+.tab.active {
 
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 18px;
-
-    background: #061b49;
+    background: var(--azul);
 
     color: white;
 
-    font-size: 28px;
+}
+
+.tab:hover:not(.active) {
+
+    background: #f1f5f9;
+
+}
+
+
+/* =====================================================
+   PANEL
+===================================================== */
+
+.tool-panel {
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 0 0 18px 18px;
+
+}
+
+.hidden {
+
+    display: none !important;
+
+}
+
+
+/* =====================================================
+   INPUTS
+===================================================== */
+
+.input-box {
+
+    margin-bottom: 20px;
+
+}
+
+.input-box label,
+.order-selector label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: bold;
+
+    color: var(--azul);
+
+}
+
+.input-box input,
+.order-selector select {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: 2px solid var(--borde);
+
+    border-radius: 10px;
+
+    font-size: 17px;
+
+    background: white;
+
+    color: var(--azul);
+
+}
+
+.input-box input:focus,
+.order-selector select:focus {
+
+    outline: none;
+
+    border-color: var(--dorado);
+
+}
+
+.input-box small {
+
+    display: block;
+
+    margin-top: 6px;
+
+    color: var(--gris);
+
+}
+
+.two-columns {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+
+}
+
+
+/* =====================================================
+   BOTONES
+===================================================== */
+
+.action-buttons {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 10px;
+
+}
+
+.action-buttons button {
+
+    border: none;
+
+    border-radius: 10px;
+
+    padding: 14px 22px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    font-size: 15px;
+
+    transition: 0.25s;
+
+}
+
+.action-buttons button:hover {
+
+    transform: translateY(-2px);
+
+}
+
+.primary-action {
+
+    background: var(--azul);
+
+    color: white;
+
+}
+
+.secondary-action {
+
+    background: #e2e8f0;
+
+    color: #334155;
+
+}
+
+
+/* =====================================================
+   RESULTADO MATEMÁTICO
+===================================================== */
+
+.math-result {
+
+    margin-top: 25px;
+
+    padding: 25px;
+
+    background: #f0f6ff;
+
+    border-left: 5px solid var(--dorado);
+
+    border-radius: 12px;
+
+    color: var(--azul);
+
+    font-size: 18px;
+
+    overflow-x: auto;
+
+}
+
+.result-main {
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    margin-top: 12px;
+
+    color: var(--azul);
+
+}
+
+.result-symbolic {
+
+    font-size: 26px;
+
+    font-weight: bold;
+
+    margin-top: 10px;
+
+    color: var(--azul-medio);
+
+}
+
+.error-message {
+
+    color: #b91c1c;
 
     font-weight: bold;
 
 }
-
-
-.tool-title h3 {
-
-    font-size: 23px;
-
-    margin-bottom: 3px;
-
-}
-
-
-.tool-title p {
-
-    color: #64748b;
-
-}
-
 
 
 /* =====================================================
    PROCEDIMIENTO
 ===================================================== */
 
-.procedure-card {
+.procedure {
 
-    background: white;
+    margin-top: 18px;
 
-    border-radius: 20px;
+    padding: 20px;
 
-    padding: 30px;
+    border-radius: 12px;
 
-    margin-top: 25px;
+    background: #f8fafc;
 
-    box-shadow:
-        0 10px 35px rgba(0,0,0,0.07);
+    color: #475569;
+
+}
+
+.procedure h4 {
+
+    color: var(--azul);
+
+    margin-bottom: 10px;
 
 }
 
 
-.procedure-title {
+/* =====================================================
+   GRÁFICA
+===================================================== */
+
+.graph-container {
+
+    background: white;
+
+    margin-top: 25px;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.06);
+
+}
+
+.graph-header {
 
     display: flex;
+
+    justify-content: space-between;
 
     align-items: center;
 
     gap: 15px;
 
-    padding-bottom: 20px;
-
-    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 10px;
 
 }
 
+.graph-header h3 {
 
-.procedure-title > span {
-
-    width: 50px;
-
-    height: 50px;
-
-    background: #fff7df;
-
-    border-radius: 12px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 25px;
+    color: var(--azul);
 
 }
 
+.graph-header span {
 
-.procedure-title h3 {
-
-    font-size: 21px;
-
-}
-
-
-.procedure-title p {
-
-    color: #64748b;
+    color: var(--gris);
 
     font-size: 14px;
 
 }
 
+#grafica {
 
+    width: 100%;
 
-/* PASOS */
-
-.steps {
-
-    padding-top: 25px;
+    height: 520px;
 
 }
 
 
-.step {
+/* =====================================================
+   EJEMPLOS
+===================================================== */
 
-    position: relative;
+.examples {
 
-    padding: 20px 20px 20px 70px;
+    margin-top: 25px;
 
-    margin-bottom: 15px;
+    background: white;
 
-    background: #f8fafc;
+    padding: 25px;
 
-    border-radius: 15px;
+    border-radius: 18px;
 
-    border-left: 4px solid #d99a17;
+}
+
+.examples h3 {
+
+    margin-bottom: 18px;
+
+}
+
+.example-buttons {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+}
+
+.example-buttons button {
+
+    border: 1px solid #cbd5e1;
+
+    background: #f1f5f9;
+
+    color: var(--azul);
+
+    padding: 13px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+
+}
+
+.example-buttons button:hover {
+
+    background: #e2e8f0;
+
+    border-color: var(--dorado);
 
 }
 
 
-.step-number {
+/* =====================================================
+   SOBRE NOSOTROS
+===================================================== */
 
-    position: absolute;
+.about-section {
 
-    left: 15px;
+    background: white;
 
-    top: 18px;
+    padding: 90px 20px;
 
-    width: 38px;
+}
 
-    height: 38px;
+.about-inner {
+
+    width: 92%;
+
+    max-width: 1050px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 0.7fr 1.3fr;
+
+    gap: 70px;
+
+    align-items: center;
+
+}
+
+.about-logo {
+
+    text-align: center;
+
+}
+
+.about-logo img {
+
+    width: 280px;
+
+    height: 280px;
+
+    object-fit: cover;
 
     border-radius: 50%;
 
-    background: #061b49;
+    box-shadow:
+        0 15px 40px rgba(7,31,73,0.18);
+
+}
+
+.about-content > span {
+
+    color: var(--dorado);
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+}
+
+.about-content h2 {
+
+    color: var(--azul);
+
+    font-size: 40px;
+
+    line-height: 1.15;
+
+    margin: 10px 0 20px;
+
+}
+
+.about-content p {
+
+    color: var(--gris);
+
+}
+
+.about-list {
+
+    margin-top: 25px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+}
+
+.about-list div {
+
+    background: #f5f7fb;
+
+    padding: 13px;
+
+    border-radius: 10px;
+
+}
+
+
+/* =====================================================
+   CONTACTO
+===================================================== */
+
+.contact-section {
+
+    padding: 75px 20px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #061b42,
+            #0b326f
+        );
 
     color: white;
+
+}
+
+.contact-inner {
+
+    width: 92%;
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 50px;
+
+}
+
+.contact-text span {
+
+    color: var(--dorado-claro);
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+}
+
+.contact-text h2 {
+
+    font-size: 40px;
+
+    line-height: 1.15;
+
+    margin: 10px 0 15px;
+
+}
+
+.contact-text p {
+
+    color: #d9e5f7;
+
+    max-width: 600px;
+
+}
+
+.contact-button {
+
+    display: inline-block;
+
+    background: var(--verde);
+
+    color: white;
+
+    margin-top: 25px;
+
+    padding: 14px 25px;
+
+    border-radius: 30px;
+
+    font-weight: bold;
+
+}
+
+.contact-qr {
+
+    text-align: center;
+
+}
+
+.contact-qr img {
+
+    width: 190px;
+
+    height: 190px;
+
+    padding: 10px;
+
+    background: white;
+
+    border-radius: 15px;
+
+}
+
+.contact-qr p {
+
+    margin-top: 8px;
+
+    color: #d9e5f7;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    background: #020b1d;
+
+    color: white;
+
+    padding: 50px 20px 20px;
+
+}
+
+.footer-inner {
+
+    width: 92%;
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr;
+
+    gap: 40px;
+
+}
+
+.footer-inner h3 {
+
+    color: var(--dorado);
+
+}
+
+.footer-inner h4 {
+
+    margin-bottom: 10px;
+
+}
+
+.footer-inner p,
+.footer-inner a {
+
+    color: #94a3b8;
+
+}
+
+.footer-inner a {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+}
+
+.footer-bottom {
+
+    width: 92%;
+
+    max-width: 1100px;
+
+    margin: 35px auto 0;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #1e293b;
+
+    text-align: center;
+
+    color: #64748b;
+
+}
+
+
+/* =====================================================
+   WHATSAPP FLOTANTE
+===================================================== */
+
+.floating-whatsapp {
+
+    position: fixed;
+
+    right: 25px;
+
+    bottom: 25px;
+
+    width: 62px;
+
+    height: 62px;
+
+    border-radius: 50%;
 
     display: flex;
 
@@ -255,162 +1372,249 @@
 
     justify-content: center;
 
-    font-weight: bold;
+    background: var(--verde);
+
+    color: white;
+
+    font-size: 28px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.3);
+
+    z-index: 10000;
+
+    transition: 0.25s;
 
 }
 
+.floating-whatsapp:hover {
 
-.step h4 {
-
-    color: #061b49;
-
-    margin-bottom: 8px;
+    transform: scale(1.1);
 
 }
-
-
-.step-content {
-
-    font-size: 18px;
-
-    color: #1e293b;
-
-    overflow-x: auto;
-
-}
-
-
-.step.final {
-
-    background: #eff6ff;
-
-    border-left-color: #16a34a;
-
-}
-
-
-.step.final .step-number {
-
-    background: #16a34a;
-
-}
-
-
-.empty-step {
-
-    text-align: center;
-
-    padding: 30px;
-
-    color: #64748b;
-
-}
-
 
 
 /* =====================================================
-   RESULTADOS MATEMÁTICOS
+   RESPONSIVE
 ===================================================== */
 
-.math-result {
+@media (max-width: 900px) {
 
-    text-align: center;
+    .menu {
 
-}
-
-
-.math-result .formula {
-
-    font-size: 25px;
-
-    font-weight: bold;
-
-    color: #061b49;
-
-    padding: 15px;
-
-    overflow-x: auto;
-
-}
-
-
-.math-result .result-number {
-
-    font-size: 38px;
-
-    font-weight: 900;
-
-    color: #d99a17;
-
-    margin-top: 10px;
-
-}
-
-
-.exact-result {
-
-    display: inline-block;
-
-    background: #eff6ff;
-
-    padding: 10px 18px;
-
-    border-radius: 10px;
-
-    margin-top: 12px;
-
-    color: #061b49;
-
-    font-weight: bold;
-
-}
-
-
-
-/* =====================================================
-   RESPONSIVE MATEMÁTICAS
-===================================================== */
-
-@media (max-width: 700px) {
-
-    .math-tabs {
-
-        width: 95%;
+        display: none;
 
     }
 
+    .hero-inner {
 
-    .calculator-container {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+    }
+
+    .hero-content > p {
+
+        margin-left: auto;
+
+        margin-right: auto;
+
+    }
+
+    .hero-buttons {
+
+        justify-content: center;
+
+    }
+
+    .hero-benefits {
+
+        justify-content: center;
+
+    }
+
+    .services-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+    .about-inner {
+
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+    }
+
+    .about-list {
+
+        text-align: left;
+
+    }
+
+    .contact-inner {
+
+        flex-direction: column;
+
+        text-align: center;
+
+    }
+
+    .footer-inner {
 
         grid-template-columns: 1fr;
 
     }
 
-
-    .step {
-
-        padding-left: 60px;
-
-    }
+}
 
 
-    .step-content {
+@media (max-width: 600px) {
 
-        font-size: 16px;
+    .navbar-inner {
+
+        width: 94%;
 
     }
 
+    .brand-text {
 
-    .math-result .formula {
+        display: none;
+
+    }
+
+    .nav-whatsapp {
+
+        padding: 9px 14px;
+
+        font-size: 13px;
+
+    }
+
+    .hero {
+
+        padding: 60px 15px;
+
+    }
+
+    .hero h1 {
+
+        font-size: 50px;
+
+    }
+
+    .hero h2 {
 
         font-size: 20px;
 
     }
 
+    .hero-buttons {
 
-    .math-result .result-number {
+        flex-direction: column;
 
-        font-size: 30px;
+    }
+
+    .button {
+
+        width: 100%;
+
+    }
+
+    .services-section {
+
+        padding: 65px 0;
+
+    }
+
+    .services-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .section-title h2 {
+
+        font-size: 32px;
+
+    }
+
+    .calculator-tabs {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+    .tab {
+
+        padding: 15px 5px;
+
+        font-size: 17px;
+
+    }
+
+    .tab span {
+
+        display: block;
+
+        margin: 3px 0 0;
+
+        font-size: 13px;
+
+    }
+
+    .tool-panel {
+
+        padding: 20px;
+
+    }
+
+    .two-columns {
+
+        grid-template-columns: 1fr;
+
+        gap: 0;
+
+    }
+
+    .example-buttons {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .graph-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+    #grafica {
+
+        height: 400px;
+
+    }
+
+    .about-content h2 {
+
+        font-size: 32px;
+
+    }
+
+    .about-list {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .contact-text h2 {
+
+        font-size: 32px;
 
     }
 
