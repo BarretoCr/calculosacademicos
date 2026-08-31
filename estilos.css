@@ -1,6 +1,6 @@
 /* =====================================================
    AYUDAS ACADÉMICAS
-   ESTILOS PRINCIPALES
+   ESTILOS
 ===================================================== */
 
 * {
@@ -9,56 +9,63 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
-    background: #f5f7fb;
-    color: #102a56;
-    line-height: 1.6;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-button,
-input,
-select {
-    font-family: inherit;
-}
-
-
-/* =====================================================
-   COLORES
-===================================================== */
 
 :root {
 
     --azul: #071f49;
-
     --azul-medio: #0b326f;
-
     --azul-claro: #174d9a;
 
     --dorado: #d69a1b;
-
     --dorado-claro: #f2c45d;
 
     --verde: #16a34a;
-
     --verde-hover: #12813b;
 
     --blanco: #ffffff;
 
     --gris: #64748b;
-
     --gris-claro: #eef2f7;
 
     --borde: #dbe2ea;
+
+    --rojo: #b91c1c;
+
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f5f7fb;
+
+    color: var(--azul);
+
+    line-height: 1.6;
+
+}
+
+
+a {
+    text-decoration: none;
+}
+
+
+button,
+input,
+select {
+
+    font-family: inherit;
 
 }
 
@@ -78,9 +85,10 @@ select {
     background: var(--azul);
 
     box-shadow:
-        0 3px 15px rgba(0, 0, 0, 0.15);
+        0 3px 15px rgba(0,0,0,0.15);
 
 }
+
 
 .navbar-inner {
 
@@ -102,6 +110,7 @@ select {
 
 }
 
+
 .brand {
 
     display: flex;
@@ -113,6 +122,7 @@ select {
     color: white;
 
 }
+
 
 .brand img {
 
@@ -126,6 +136,7 @@ select {
 
 }
 
+
 .brand-text {
 
     display: flex;
@@ -136,6 +147,7 @@ select {
 
 }
 
+
 .brand-text strong {
 
     font-size: 19px;
@@ -143,6 +155,7 @@ select {
     letter-spacing: 1px;
 
 }
+
 
 .brand-text span {
 
@@ -158,6 +171,7 @@ select {
 
 }
 
+
 .menu {
 
     display: flex;
@@ -167,6 +181,7 @@ select {
     gap: 30px;
 
 }
+
 
 .menu a {
 
@@ -180,11 +195,13 @@ select {
 
 }
 
+
 .menu a:hover {
 
     color: var(--dorado-claro);
 
 }
+
 
 .nav-whatsapp {
 
@@ -202,11 +219,10 @@ select {
 
 }
 
+
 .nav-whatsapp:hover {
 
     transform: translateY(-2px);
-
-    background: #e5a923;
 
 }
 
@@ -221,7 +237,7 @@ select {
 
         radial-gradient(
             circle at 85% 30%,
-            rgba(35, 86, 155, 0.55),
+            rgba(35,86,155,0.55),
             transparent 32%
         ),
 
@@ -235,9 +251,8 @@ select {
 
     padding: 90px 20px;
 
-    overflow: hidden;
-
 }
+
 
 .hero-inner {
 
@@ -250,14 +265,15 @@ select {
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1.4fr)
-        minmax(300px, 0.6fr);
+        minmax(0,1.4fr)
+        minmax(300px,0.6fr);
 
     gap: 70px;
 
     align-items: center;
 
 }
+
 
 .hero-label {
 
@@ -273,17 +289,19 @@ select {
 
 }
 
+
 .hero h1 {
 
-    font-size: clamp(52px, 7vw, 88px);
+    font-size: clamp(52px,7vw,88px);
 
-    line-height: 0.95;
+    line-height: .95;
 
     font-weight: 900;
 
     margin-bottom: 25px;
 
 }
+
 
 .hero h1 span {
 
@@ -292,6 +310,7 @@ select {
     color: var(--dorado);
 
 }
+
 
 .hero h2 {
 
@@ -303,6 +322,7 @@ select {
 
 }
 
+
 .hero-content > p {
 
     max-width: 650px;
@@ -312,6 +332,7 @@ select {
     font-size: 18px;
 
 }
+
 
 .hero-buttons {
 
@@ -325,6 +346,7 @@ select {
 
 }
 
+
 .button {
 
     padding: 14px 23px;
@@ -333,15 +355,17 @@ select {
 
     font-weight: bold;
 
-    transition: 0.25s;
+    transition: .25s;
 
 }
+
 
 .button:hover {
 
     transform: translateY(-3px);
 
 }
+
 
 .button-gold {
 
@@ -351,6 +375,7 @@ select {
 
 }
 
+
 .button-green {
 
     background: var(--verde);
@@ -358,6 +383,7 @@ select {
     color: white;
 
 }
+
 
 .hero-benefits {
 
@@ -375,23 +401,19 @@ select {
 
 }
 
-.hero-benefits div::first-letter {
-
-    color: var(--dorado);
-
-}
-
 
 /* =====================================================
-   WHATSAPP CARD
+   WHATSAPP
 ===================================================== */
 
 .whatsapp-card {
 
-    background: rgba(255,255,255,0.09);
+    background:
+        rgba(255,255,255,.09);
 
-    border: 1px solid
-            rgba(242,196,93,0.7);
+    border:
+        1px solid
+        rgba(242,196,93,.7);
 
     border-radius: 25px;
 
@@ -402,9 +424,10 @@ select {
     backdrop-filter: blur(10px);
 
     box-shadow:
-        0 20px 50px rgba(0,0,0,0.3);
+        0 20px 50px rgba(0,0,0,.3);
 
 }
+
 
 .whatsapp-title {
 
@@ -412,19 +435,20 @@ select {
 
 }
 
+
 .whatsapp-card h3 {
 
     font-size: 27px;
 
-    margin: 5px 0;
-
 }
+
 
 .whatsapp-card > p {
 
     color: #d9e5f7;
 
 }
+
 
 .qr-image {
 
@@ -446,6 +470,7 @@ select {
 
 }
 
+
 .whatsapp-button {
 
     display: block;
@@ -460,9 +485,10 @@ select {
 
     font-weight: bold;
 
-    transition: 0.25s;
+    transition: .25s;
 
 }
+
 
 .whatsapp-button:hover {
 
@@ -472,19 +498,18 @@ select {
 
 }
 
+
 .whatsapp-number {
 
     margin-top: 13px;
 
     color: #d9e5f7;
 
-    font-size: 14px;
-
 }
 
 
 /* =====================================================
-   TÍTULOS DE SECCIÓN
+   TÍTULOS
 ===================================================== */
 
 .section-title {
@@ -494,6 +519,7 @@ select {
     margin-bottom: 50px;
 
 }
+
 
 .section-title span {
 
@@ -507,6 +533,7 @@ select {
 
 }
 
+
 .section-title h2 {
 
     color: var(--azul);
@@ -516,6 +543,7 @@ select {
     margin: 8px 0;
 
 }
+
 
 .section-title p {
 
@@ -544,16 +572,18 @@ select {
 
 }
 
+
 .services-grid {
 
     display: grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3,1fr);
 
     gap: 22px;
 
 }
+
 
 .service {
 
@@ -567,12 +597,13 @@ select {
 
     text-align: center;
 
-    transition: 0.3s;
+    transition: .3s;
 
     box-shadow:
-        0 8px 25px rgba(0,0,0,0.05);
+        0 8px 25px rgba(0,0,0,.05);
 
 }
+
 
 .service:hover {
 
@@ -580,10 +611,8 @@ select {
 
     border-color: var(--dorado);
 
-    box-shadow:
-        0 15px 35px rgba(7,31,73,0.12);
-
 }
+
 
 .service-icon {
 
@@ -607,13 +636,13 @@ select {
 
 }
 
+
 .service h3 {
 
     margin-bottom: 10px;
 
-    color: var(--azul);
-
 }
+
 
 .service p {
 
@@ -634,6 +663,7 @@ select {
 
 }
 
+
 .calculator {
 
     width: 92%;
@@ -646,14 +676,15 @@ select {
 
 
 /* =====================================================
-   TABS
+   PESTAÑAS
 ===================================================== */
 
 .calculator-tabs {
 
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        repeat(3,1fr);
 
     background: white;
 
@@ -662,6 +693,7 @@ select {
     overflow: hidden;
 
 }
+
 
 .tab {
 
@@ -673,21 +705,25 @@ select {
 
     cursor: pointer;
 
-    font-size: 20px;
+    font-size: 19px;
 
     font-weight: bold;
 
     color: var(--gris);
 
-    transition: 0.25s;
+    transition: .25s;
 
 }
 
-.tab span {
 
-    margin-left: 8px;
+.tab-symbol {
+
+    font-size: 25px;
+
+    margin-right: 8px;
 
 }
+
 
 .tab.active {
 
@@ -696,6 +732,7 @@ select {
     color: white;
 
 }
+
 
 .tab:hover:not(.active) {
 
@@ -714,13 +751,46 @@ select {
 
     padding: 35px;
 
-    border-radius: 0 0 18px 18px;
+    border-radius:
+        0 0 18px 18px;
 
 }
+
 
 .hidden {
 
     display: none !important;
+
+}
+
+
+.tool-description {
+
+    background: #f5f8fc;
+
+    border-left: 5px solid var(--dorado);
+
+    padding: 18px;
+
+    border-radius: 10px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.tool-description strong {
+
+    font-size: 20px;
+
+}
+
+
+.tool-description p {
+
+    color: var(--gris);
+
+    margin-top: 5px;
 
 }
 
@@ -735,6 +805,7 @@ select {
 
 }
 
+
 .input-box label,
 .order-selector label {
 
@@ -744,18 +815,20 @@ select {
 
     font-weight: bold;
 
-    color: var(--azul);
-
 }
 
+
 .input-box input,
-.order-selector select {
+.order-selector select,
+.limit-controls select {
 
     width: 100%;
 
     padding: 14px;
 
-    border: 2px solid var(--borde);
+    border:
+        2px solid
+        var(--borde);
 
     border-radius: 10px;
 
@@ -767,14 +840,17 @@ select {
 
 }
 
+
 .input-box input:focus,
-.order-selector select:focus {
+.order-selector select:focus,
+.limit-controls select:focus {
 
     outline: none;
 
     border-color: var(--dorado);
 
 }
+
 
 .input-box small {
 
@@ -786,11 +862,14 @@ select {
 
 }
 
-.two-columns {
+
+.two-columns,
+.limit-controls {
 
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
     gap: 20px;
 
@@ -813,6 +892,7 @@ select {
 
 }
 
+
 .action-buttons button {
 
     border: none;
@@ -827,15 +907,17 @@ select {
 
     font-size: 15px;
 
-    transition: 0.25s;
+    transition: .25s;
 
 }
+
 
 .action-buttons button:hover {
 
     transform: translateY(-2px);
 
 }
+
 
 .primary-action {
 
@@ -844,6 +926,7 @@ select {
     color: white;
 
 }
+
 
 .secondary-action {
 
@@ -855,7 +938,7 @@ select {
 
 
 /* =====================================================
-   RESULTADO MATEMÁTICO
+   RESULTADO
 ===================================================== */
 
 .math-result {
@@ -866,7 +949,9 @@ select {
 
     background: #f0f6ff;
 
-    border-left: 5px solid var(--dorado);
+    border-left:
+        5px solid
+        var(--dorado);
 
     border-radius: 12px;
 
@@ -878,6 +963,7 @@ select {
 
 }
 
+
 .result-main {
 
     font-size: 30px;
@@ -886,25 +972,32 @@ select {
 
     margin-top: 12px;
 
-    color: var(--azul);
-
 }
+
 
 .result-symbolic {
 
-    font-size: 26px;
-
-    font-weight: bold;
+    font-size: 25px;
 
     margin-top: 10px;
 
-    color: var(--azul-medio);
+}
+
+
+.result-decimal {
+
+    font-size: 18px;
+
+    color: var(--gris);
+
+    margin-top: 8px;
 
 }
 
+
 .error-message {
 
-    color: #b91c1c;
+    color: var(--rojo);
 
     font-weight: bold;
 
@@ -919,7 +1012,7 @@ select {
 
     margin-top: 18px;
 
-    padding: 20px;
+    padding: 25px;
 
     border-radius: 12px;
 
@@ -929,11 +1022,53 @@ select {
 
 }
 
+
 .procedure h4 {
 
     color: var(--azul);
 
-    margin-bottom: 10px;
+    font-size: 21px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.procedure-step {
+
+    background: white;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius: 10px;
+
+    padding: 15px;
+
+    margin: 12px 0;
+
+}
+
+
+.procedure-step strong {
+
+    color: var(--azul);
+
+}
+
+
+.math-line {
+
+    margin-top: 10px;
+
+    padding: 10px;
+
+    background: #f1f5f9;
+
+    border-radius: 8px;
+
+    overflow-x: auto;
 
 }
 
@@ -953,9 +1088,10 @@ select {
     border-radius: 18px;
 
     box-shadow:
-        0 8px 25px rgba(0,0,0,0.06);
+        0 8px 25px rgba(0,0,0,.06);
 
 }
+
 
 .graph-header {
 
@@ -971,11 +1107,13 @@ select {
 
 }
 
+
 .graph-header h3 {
 
     color: var(--azul);
 
 }
+
 
 .graph-header span {
 
@@ -984,6 +1122,7 @@ select {
     font-size: 14px;
 
 }
+
 
 #grafica {
 
@@ -1010,26 +1149,31 @@ select {
 
 }
 
+
 .examples h3 {
 
     margin-bottom: 18px;
 
 }
 
+
 .example-buttons {
 
     display: grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3,1fr);
 
     gap: 12px;
 
 }
 
+
 .example-buttons button {
 
-    border: 1px solid #cbd5e1;
+    border:
+        1px solid
+        #cbd5e1;
 
     background: #f1f5f9;
 
@@ -1043,9 +1187,10 @@ select {
 
     font-weight: bold;
 
-    transition: 0.2s;
+    transition: .2s;
 
 }
+
 
 .example-buttons button:hover {
 
@@ -1057,7 +1202,7 @@ select {
 
 
 /* =====================================================
-   SOBRE NOSOTROS
+   ABOUT
 ===================================================== */
 
 .about-section {
@@ -1067,6 +1212,7 @@ select {
     padding: 90px 20px;
 
 }
+
 
 .about-inner {
 
@@ -1078,7 +1224,8 @@ select {
 
     display: grid;
 
-    grid-template-columns: 0.7fr 1.3fr;
+    grid-template-columns:
+        .7fr 1.3fr;
 
     gap: 70px;
 
@@ -1086,11 +1233,13 @@ select {
 
 }
 
+
 .about-logo {
 
     text-align: center;
 
 }
+
 
 .about-logo img {
 
@@ -1103,9 +1252,10 @@ select {
     border-radius: 50%;
 
     box-shadow:
-        0 15px 40px rgba(7,31,73,0.18);
+        0 15px 40px rgba(7,31,73,.18);
 
 }
+
 
 .about-content > span {
 
@@ -1116,6 +1266,7 @@ select {
     letter-spacing: 2px;
 
 }
+
 
 .about-content h2 {
 
@@ -1129,11 +1280,13 @@ select {
 
 }
 
+
 .about-content p {
 
     color: var(--gris);
 
 }
+
 
 .about-list {
 
@@ -1141,11 +1294,13 @@ select {
 
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
     gap: 12px;
 
 }
+
 
 .about-list div {
 
@@ -1178,6 +1333,7 @@ select {
 
 }
 
+
 .contact-inner {
 
     width: 92%;
@@ -1196,6 +1352,7 @@ select {
 
 }
 
+
 .contact-text span {
 
     color: var(--dorado-claro);
@@ -1205,6 +1362,7 @@ select {
     letter-spacing: 2px;
 
 }
+
 
 .contact-text h2 {
 
@@ -1216,13 +1374,13 @@ select {
 
 }
 
+
 .contact-text p {
 
     color: #d9e5f7;
 
-    max-width: 600px;
-
 }
+
 
 .contact-button {
 
@@ -1242,11 +1400,13 @@ select {
 
 }
 
+
 .contact-qr {
 
     text-align: center;
 
 }
+
 
 .contact-qr img {
 
@@ -1261,6 +1421,7 @@ select {
     border-radius: 15px;
 
 }
+
 
 .contact-qr p {
 
@@ -1285,6 +1446,7 @@ footer {
 
 }
 
+
 .footer-inner {
 
     width: 92%;
@@ -1302,17 +1464,20 @@ footer {
 
 }
 
+
 .footer-inner h3 {
 
     color: var(--dorado);
 
 }
 
+
 .footer-inner h4 {
 
     margin-bottom: 10px;
 
 }
+
 
 .footer-inner p,
 .footer-inner a {
@@ -1321,6 +1486,7 @@ footer {
 
 }
 
+
 .footer-inner a {
 
     display: block;
@@ -1328,6 +1494,7 @@ footer {
     margin-bottom: 5px;
 
 }
+
 
 .footer-bottom {
 
@@ -1339,7 +1506,9 @@ footer {
 
     padding-top: 20px;
 
-    border-top: 1px solid #1e293b;
+    border-top:
+        1px solid
+        #1e293b;
 
     text-align: center;
 
@@ -1379,13 +1548,14 @@ footer {
     font-size: 28px;
 
     box-shadow:
-        0 8px 25px rgba(0,0,0,0.3);
+        0 8px 25px rgba(0,0,0,.3);
 
     z-index: 10000;
 
-    transition: 0.25s;
+    transition: .25s;
 
 }
+
 
 .floating-whatsapp:hover {
 
@@ -1400,11 +1570,13 @@ footer {
 
 @media (max-width: 900px) {
 
+
     .menu {
 
         display: none;
 
     }
+
 
     .hero-inner {
 
@@ -1414,13 +1586,14 @@ footer {
 
     }
 
+
     .hero-content > p {
 
-        margin-left: auto;
-
-        margin-right: auto;
+        margin:
+            0 auto;
 
     }
+
 
     .hero-buttons {
 
@@ -1428,18 +1601,21 @@ footer {
 
     }
 
+
     .hero-benefits {
 
         justify-content: center;
 
     }
 
+
     .services-grid {
 
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
 
     }
+
 
     .about-inner {
 
@@ -1449,11 +1625,6 @@ footer {
 
     }
 
-    .about-list {
-
-        text-align: left;
-
-    }
 
     .contact-inner {
 
@@ -1462,6 +1633,7 @@ footer {
         text-align: center;
 
     }
+
 
     .footer-inner {
 
@@ -1472,13 +1644,8 @@ footer {
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
 
-    .navbar-inner {
-
-        width: 94%;
-
-    }
 
     .brand-text {
 
@@ -1486,13 +1653,6 @@ footer {
 
     }
 
-    .nav-whatsapp {
-
-        padding: 9px 14px;
-
-        font-size: 13px;
-
-    }
 
     .hero {
 
@@ -1500,11 +1660,13 @@ footer {
 
     }
 
+
     .hero h1 {
 
         font-size: 50px;
 
     }
+
 
     .hero h2 {
 
@@ -1512,11 +1674,13 @@ footer {
 
     }
 
+
     .hero-buttons {
 
         flex-direction: column;
 
     }
+
 
     .button {
 
@@ -1524,11 +1688,6 @@ footer {
 
     }
 
-    .services-section {
-
-        padding: 65px 0;
-
-    }
 
     .services-grid {
 
@@ -1536,35 +1695,41 @@ footer {
 
     }
 
+
     .section-title h2 {
 
         font-size: 32px;
 
     }
 
+
     .calculator-tabs {
 
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+            1fr 1fr 1fr;
 
     }
+
 
     .tab {
 
-        padding: 15px 5px;
+        padding: 15px 3px;
 
-        font-size: 17px;
+        font-size: 14px;
 
     }
 
-    .tab span {
+
+    .tab-symbol {
 
         display: block;
 
-        margin: 3px 0 0;
+        margin: 0 0 4px;
 
-        font-size: 13px;
+        font-size: 20px;
 
     }
+
 
     .tool-panel {
 
@@ -1572,7 +1737,9 @@ footer {
 
     }
 
-    .two-columns {
+
+    .two-columns,
+    .limit-controls {
 
         grid-template-columns: 1fr;
 
@@ -1580,11 +1747,13 @@ footer {
 
     }
 
+
     .example-buttons {
 
         grid-template-columns: 1fr;
 
     }
+
 
     .graph-header {
 
@@ -1594,11 +1763,13 @@ footer {
 
     }
 
+
     #grafica {
 
         height: 400px;
 
     }
+
 
     .about-content h2 {
 
@@ -1606,11 +1777,13 @@ footer {
 
     }
 
+
     .about-list {
 
         grid-template-columns: 1fr;
 
     }
+
 
     .contact-text h2 {
 
