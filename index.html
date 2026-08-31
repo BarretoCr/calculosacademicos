@@ -8,59 +8,70 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-          content="Ayudas Académicas - Herramientas matemáticas y apoyo académico">
+    <meta
+        name="description"
+        content="AYUDAS ACADÉMICAS - Calculadora de integrales, derivadas y límites"
+    >
 
     <title>AYUDAS ACADÉMICAS</title>
 
-    <link rel="icon" href="img/logo.jpg">
 
-    <!-- ==============================
-         ESTILOS
-    =============================== -->
+    <!-- FAVICON -->
 
-    <link rel="stylesheet" href="estilos.css">
+    <link
+        rel="icon"
+        href="img/logo.jpg"
+    >
 
 
-    <!-- ==============================
+    <!-- ==================================================
+         CSS
+    =================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="estilos.css"
+    >
+
+
+    <!-- ==================================================
          MATH.JS
-         Cálculos numéricos
-    =============================== -->
+    =================================================== -->
 
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.4.2/math.min.js">
     </script>
 
 
-    <!-- ==============================
-         NERDAMER
-         Cálculo simbólico
-    =============================== -->
-
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/nerdamer/1.1.13/nerdamer.core.min.js">
-    </script>
-
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/nerdamer/1.1.13/Algebra.min.js">
-    </script>
-
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/nerdamer/1.1.13/Calculus.min.js">
-    </script>
-
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/nerdamer/1.1.13/Solve.min.js">
-    </script>
-
-
-    <!-- ==============================
+    <!-- ==================================================
          PLOTLY
-         Gráficas
-    =============================== -->
+         GRÁFICAS
+    =================================================== -->
 
     <script
         src="https://cdn.plot.ly/plotly-2.35.2.min.js">
+    </script>
+
+
+    <!-- ==================================================
+         MATHJAX
+         REPRESENTACIÓN MATEMÁTICA
+    =================================================== -->
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
     </script>
 
 </head>
@@ -69,17 +80,21 @@
 <body>
 
 
-<!-- ==================================================
-     NAVBAR
-=================================================== -->
+<!-- =====================================================
+     BARRA DE NAVEGACIÓN
+===================================================== -->
 
 <header class="navbar">
 
     <div class="navbar-inner">
 
 
-        <a href="#inicio"
-           class="brand">
+        <!-- LOGO -->
+
+        <a
+            href="#inicio"
+            class="brand"
+        >
 
             <img
                 src="img/logo.jpg"
@@ -100,6 +115,8 @@
 
         </a>
 
+
+        <!-- MENÚ -->
 
         <nav class="menu">
 
@@ -122,13 +139,15 @@
         </nav>
 
 
+        <!-- WHATSAPP -->
+
         <a
             href="https://wa.me/573025166134"
             target="_blank"
             class="nav-whatsapp"
         >
 
-            WhatsApp
+            💬 WhatsApp
 
         </a>
 
@@ -138,15 +157,14 @@
 
 
 
-<!-- ==================================================
-     INICIO
-=================================================== -->
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-<main>
-
-
-<section id="inicio"
-         class="hero">
+<section
+    id="inicio"
+    class="hero"
+>
 
 
     <div class="hero-inner">
@@ -183,9 +201,9 @@
 
             <p>
 
-                Herramientas académicas y apoyo para
-                estudiantes en diferentes áreas del
-                conocimiento.
+                Herramientas académicas para facilitar
+                el aprendizaje, la comprensión y el
+                desarrollo de actividades universitarias.
 
             </p>
 
@@ -198,13 +216,13 @@
                     class="button button-gold"
                 >
 
-                    🧮 Herramientas académicas
+                    🧮 Ir a las herramientas
 
                 </a>
 
 
                 <a
-                    href="https://wa.me/573025166134?text=Hola%20Ayudas%20Acad%C3%A9micas,%20necesito%20informaci%C3%B3n."
+                    href="https://wa.me/573025166134?text=Hola%20AYUDAS%20ACAD%C3%89MICAS,%20necesito%20informaci%C3%B3n."
                     target="_blank"
                     class="button button-green"
                 >
@@ -213,33 +231,22 @@
 
                 </a>
 
-
             </div>
 
 
             <div class="hero-benefits">
 
-
                 <div>
-
-                    ✓ Atención personalizada
-
+                    ✓ Fácil de utilizar
                 </div>
 
-
                 <div>
-
-                    ✓ Confidencialidad
-
+                    ✓ Desarrollo paso a paso
                 </div>
 
-
                 <div>
-
-                    ✓ Compromiso
-
+                    ✓ Resultados y gráficas
                 </div>
-
 
             </div>
 
@@ -253,24 +260,18 @@
 
 
             <div class="whatsapp-title">
-
                 💬
-
             </div>
 
 
             <h3>
-
                 ¿Necesitas ayuda?
-
             </h3>
 
 
             <p>
-
                 Escríbenos directamente
                 por WhatsApp.
-
             </p>
 
 
@@ -306,12 +307,14 @@
 
 
 
-<!-- ==================================================
+<!-- =====================================================
      SERVICIOS
-=================================================== -->
+===================================================== -->
 
-<section id="servicios"
-         class="services-section">
+<section
+    id="servicios"
+    class="services-section"
+>
 
 
     <div class="section-title">
@@ -325,8 +328,8 @@
         </h2>
 
         <p>
-            Soluciones y herramientas para diferentes
-            necesidades académicas.
+            Herramientas para diferentes necesidades
+            académicas.
         </p>
 
     </div>
@@ -346,8 +349,8 @@
             </h3>
 
             <p>
-                Apoyo en la estructuración y elaboración
-                de trabajos académicos.
+                Apoyo en la estructuración y desarrollo
+                de actividades académicas.
             </p>
 
         </article>
@@ -364,26 +367,8 @@
             </h3>
 
             <p>
-                Orientación y apoyo para actividades,
-                cuestionarios y evaluaciones.
-            </p>
-
-        </article>
-
-
-        <article class="service">
-
-            <div class="service-icon">
-                📚
-            </div>
-
-            <h3>
-                Ensayos y monografías
-            </h3>
-
-            <p>
-                Investigación, organización y
-                presentación de documentos.
+                Herramientas de apoyo para actividades
+                y evaluaciones.
             </p>
 
         </article>
@@ -400,8 +385,8 @@
             </h3>
 
             <p>
-                Apoyo en proyectos de programación,
-                bases de datos y sistemas.
+                Apoyo en programación, bases de datos
+                y desarrollo de sistemas.
             </p>
 
         </article>
@@ -418,8 +403,8 @@
             </h3>
 
             <p>
-                Cálculos, análisis estadístico,
-                tablas y gráficas.
+                Cálculos, estadísticas, análisis y
+                representación gráfica.
             </p>
 
         </article>
@@ -436,8 +421,26 @@
             </h3>
 
             <p>
-                Derivadas, integrales, álgebra,
-                cálculo y otras áreas.
+                Cálculo, álgebra, derivadas, integrales
+                y límites.
+            </p>
+
+        </article>
+
+
+        <article class="service">
+
+            <div class="service-icon">
+                📚
+            </div>
+
+            <h3>
+                Investigación
+            </h3>
+
+            <p>
+                Organización y presentación de
+                trabajos académicos.
             </p>
 
         </article>
@@ -449,12 +452,14 @@
 
 
 
-<!-- ==================================================
-     HERRAMIENTAS
-=================================================== -->
+<!-- =====================================================
+     HERRAMIENTAS MATEMÁTICAS
+===================================================== -->
 
-<section id="herramientas"
-         class="tools-section">
+<section
+    id="herramientas"
+    class="tools-section"
+>
 
 
     <div class="section-title">
@@ -468,21 +473,20 @@
         </h2>
 
         <p>
-            Resuelve derivadas e integrales y
-            visualiza las funciones gráficamente.
+            Calcula integrales, derivadas y límites
+            con desarrollo y representación gráfica.
         </p>
 
     </div>
 
 
 
-    <!-- ============================================
-         SELECTOR
-    ============================================= -->
-
-
     <div class="calculator">
 
+
+        <!-- ==================================================
+             PESTAÑAS
+        =================================================== -->
 
         <div class="calculator-tabs">
 
@@ -493,7 +497,9 @@
                 onclick="mostrarHerramienta('integral')"
             >
 
-                ∫
+                <span class="tab-symbol">
+                    ∫
+                </span>
 
                 <span>
                     Integrales
@@ -508,10 +514,29 @@
                 onclick="mostrarHerramienta('derivada')"
             >
 
-                d/dx
+                <span class="tab-symbol">
+                    d/dx
+                </span>
 
                 <span>
                     Derivadas
+                </span>
+
+            </button>
+
+
+            <button
+                id="tabLimite"
+                class="tab"
+                onclick="mostrarHerramienta('limite')"
+            >
+
+                <span class="tab-symbol">
+                    lim
+                </span>
+
+                <span>
+                    Límites
                 </span>
 
             </button>
@@ -521,10 +546,9 @@
 
 
 
-        <!-- ========================================
+        <!-- ==================================================
              INTEGRAL
-        ========================================= -->
-
+        =================================================== -->
 
         <div
             id="panelIntegral"
@@ -532,13 +556,26 @@
         >
 
 
-            <div class="input-box">
+            <div class="tool-description">
 
+                <strong>
+                    ∫ Calculadora de integrales
+                </strong>
+
+                <p>
+                    Introduce una función y los límites
+                    de integración para obtener el resultado,
+                    procedimiento y gráfica.
+                </p>
+
+            </div>
+
+
+            <div class="input-box">
 
                 <label>
                     Función f(x)
                 </label>
-
 
                 <input
                     id="integralFuncion"
@@ -547,20 +584,12 @@
                     placeholder="Ejemplo: x^2 + 3*x"
                 >
 
-
                 <small>
-
-                    Ejemplos:
-                    x^2,
-                    sin(x),
-                    cos(x),
-                    exp(x),
-                    sqrt(x)
-
+                    Ejemplos: x^2, sin(x), cos(x),
+                    exp(x), sqrt(x)
                 </small>
 
             </div>
-
 
 
             <div class="two-columns">
@@ -598,7 +627,6 @@
                 </div>
 
             </div>
-
 
 
             <div class="action-buttons">
@@ -648,10 +676,9 @@
 
 
 
-        <!-- ========================================
+        <!-- ==================================================
              DERIVADA
-        ========================================= -->
-
+        =================================================== -->
 
         <div
             id="panelDerivada"
@@ -659,13 +686,25 @@
         >
 
 
-            <div class="input-box">
+            <div class="tool-description">
 
+                <strong>
+                    d/dx Calculadora de derivadas
+                </strong>
+
+                <p>
+                    Calcula derivadas de primer, segundo,
+                    tercer y cuarto orden.
+                </p>
+
+            </div>
+
+
+            <div class="input-box">
 
                 <label>
                     Función f(x)
                 </label>
-
 
                 <input
                     id="derivadaFuncion"
@@ -674,29 +713,19 @@
                     placeholder="Ejemplo: x^3 + 2*x"
                 >
 
-
                 <small>
-
-                    Ejemplos:
-                    x^3,
-                    sin(x),
-                    cos(x),
-                    exp(x),
-                    ln(x)
-
+                    Ejemplos: x^3, sin(x), cos(x),
+                    exp(x), log(x)
                 </small>
 
             </div>
 
 
-
             <div class="order-selector">
-
 
                 <label>
                     Orden de la derivada
                 </label>
-
 
                 <select id="ordenDerivada">
 
@@ -721,9 +750,7 @@
             </div>
 
 
-
             <div class="action-buttons">
-
 
                 <button
                     class="primary-action"
@@ -769,10 +796,155 @@
 
 
 
-        <!-- ========================================
-             GRÁFICA
-        ========================================= -->
+        <!-- ==================================================
+             LÍMITES
+        =================================================== -->
 
+        <div
+            id="panelLimite"
+            class="tool-panel hidden"
+        >
+
+
+            <div class="tool-description">
+
+                <strong>
+                    lim Calculadora de límites
+                </strong>
+
+                <p>
+                    Calcula el límite de una función cuando
+                    x se aproxima a un determinado valor.
+                </p>
+
+            </div>
+
+
+            <div class="input-box">
+
+                <label>
+                    Función f(x)
+                </label>
+
+                <input
+                    id="limiteFuncion"
+                    type="text"
+                    value="(x^2 - 4)/(x - 2)"
+                    placeholder="Ejemplo: (x^2-4)/(x-2)"
+                >
+
+                <small>
+
+                    Ejemplos:
+                    (x^2-4)/(x-2),
+                    sin(x)/x,
+                    1/x,
+                    (x^2+3*x+2)/(x+1)
+
+                </small>
+
+            </div>
+
+
+            <div class="limit-controls">
+
+
+                <div class="input-box">
+
+                    <label>
+                        x se aproxima a
+                    </label>
+
+                    <input
+                        id="limitePunto"
+                        type="text"
+                        value="2"
+                        placeholder="Ejemplo: 2"
+                    >
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <label>
+                        Tipo de límite
+                    </label>
+
+                    <select
+                        id="tipoLimite"
+                    >
+
+                        <option value="bilateral">
+                            Límite bilateral
+                        </option>
+
+                        <option value="izquierda">
+                            Por la izquierda
+                        </option>
+
+                        <option value="derecha">
+                            Por la derecha
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="action-buttons">
+
+
+                <button
+                    class="primary-action"
+                    onclick="calcularLimite()"
+                >
+
+                    lim Calcular límite
+
+                </button>
+
+
+                <button
+                    class="secondary-action"
+                    onclick="limpiarLimite()"
+                >
+
+                    Limpiar
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="resultadoLimite"
+                class="math-result"
+            >
+
+                Introduce una función y el punto
+                al que x se aproxima.
+
+            </div>
+
+
+            <div
+                id="procedimientoLimite"
+                class="procedure"
+            >
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ==================================================
+             GRÁFICA
+        =================================================== -->
 
         <div class="graph-container">
 
@@ -790,17 +962,17 @@
             </div>
 
 
-            <div id="grafica"></div>
+            <div id="grafica">
+            </div>
 
 
         </div>
 
 
 
-        <!-- ========================================
+        <!-- ==================================================
              EJEMPLOS
-        ========================================= -->
-
+        =================================================== -->
 
         <div class="examples">
 
@@ -867,6 +1039,33 @@
                 </button>
 
 
+                <button
+                    onclick="ejemploLimite('(x^2-4)/(x-2)',2)"
+                >
+
+                    lim x→2
+
+                </button>
+
+
+                <button
+                    onclick="ejemploLimite('sin(x)/x',0)"
+                >
+
+                    lim sen(x)/x
+
+                </button>
+
+
+                <button
+                    onclick="ejemploLimite('1/x',0)"
+                >
+
+                    lim 1/x
+
+                </button>
+
+
             </div>
 
         </div>
@@ -878,9 +1077,9 @@
 
 
 
-<!-- ==================================================
-     SOBRE NOSOTROS
-=================================================== -->
+<!-- =====================================================
+     SOBRE LA PÁGINA
+===================================================== -->
 
 <section class="about-section">
 
@@ -892,7 +1091,7 @@
 
             <img
                 src="img/logo.jpg"
-                alt="Ayudas Académicas"
+                alt="AYUDAS ACADÉMICAS"
             >
 
         </div>
@@ -907,15 +1106,17 @@
 
 
             <h2>
-                Una herramienta pensada para estudiantes
+                Herramientas para aprender y comprender
             </h2>
 
 
             <p>
 
-                Ponemos a disposición herramientas que
-                facilitan el desarrollo y comprensión de
-                diferentes actividades académicas.
+                Nuestra plataforma busca facilitar el
+                desarrollo de actividades académicas mediante
+                herramientas interactivas que muestran no
+                solamente el resultado, sino también el
+                procedimiento utilizado.
 
             </p>
 
@@ -924,33 +1125,33 @@
 
 
                 <div>
-                    🔒
+                    📐
                     <strong>
-                        Confidencialidad
+                        Procedimientos
                     </strong>
                 </div>
 
 
                 <div>
-                    ⭐
+                    📊
                     <strong>
-                        Calidad
+                        Gráficas
                     </strong>
                 </div>
 
 
                 <div>
-                    👥
+                    🧮
                     <strong>
-                        Atención personalizada
+                        Cálculos
                     </strong>
                 </div>
 
 
                 <div>
-                    ⏰
+                    📚
                     <strong>
-                        Compromiso
+                        Aprendizaje
                     </strong>
                 </div>
 
@@ -965,12 +1166,14 @@
 
 
 
-<!-- ==================================================
+<!-- =====================================================
      CONTACTO
-=================================================== -->
+===================================================== -->
 
-<section id="contacto"
-         class="contact-section">
+<section
+    id="contacto"
+    class="contact-section"
+>
 
 
     <div class="contact-inner">
@@ -1014,7 +1217,7 @@
 
             <img
                 src="img/qr-whatsapp.png"
-                alt="Código QR de WhatsApp"
+                alt="Código QR WhatsApp"
             >
 
 
@@ -1022,22 +1225,17 @@
                 Escanea para contactarnos
             </p>
 
-
         </div>
-
 
     </div>
 
 </section>
 
 
-</main>
 
-
-
-<!-- ==================================================
+<!-- =====================================================
      FOOTER
-=================================================== -->
+===================================================== -->
 
 <footer>
 
@@ -1073,6 +1271,10 @@
                 Derivadas
             </a>
 
+            <a href="#herramientas">
+                Límites
+            </a>
+
         </div>
 
 
@@ -1106,15 +1308,15 @@
 
 
 
-<!-- ==================================================
+<!-- =====================================================
      WHATSAPP FLOTANTE
-=================================================== -->
+===================================================== -->
 
 <a
     href="https://wa.me/573025166134"
     target="_blank"
     class="floating-whatsapp"
-    title="WhatsApp"
+    title="Contactar por WhatsApp"
 >
 
     💬
@@ -1123,7 +1325,9 @@
 
 
 
-<!-- JAVASCRIPT -->
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script src="script.js"></script>
 
